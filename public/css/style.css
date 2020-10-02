@@ -52,7 +52,7 @@ table {
     align-items: center;
 }
 
-.landing-jumbo {
+.landing-jumbo, .container-register {
     background-position: center;
     background-image: url('/images/spaceman2.png');
     background-size: 250px;
@@ -63,36 +63,63 @@ table {
     border-bottom-left-radius: 25%;
     display: flex;
     flex-direction: column;
-    
-}
-.landing-jumbo .container {
-    margin-top: 270px;
-    width: 70%;
+    max-width: 600px;
 }
 
+
+
+
+.landing-jumbom,  .container-landing{
+    margin-top: 270px;
+    
+}
+
+a:hover {
+    text-decoration : none !important;
+}
 
 
 .landing-btn {
-     background-color: rgb(255, 145, 0);
+    background-color: rgb(255, 145, 0);
     color: beige;
     padding: 10;
     border: none;    
 }
 .landing-btn:focus, .landing-btn2:focus{
     background-color: transparent !important;
-    border: none !important;
     box-shadow: none !important;
 }
 
 
-.landing-btn:hover, .landing-btn2:hover{
+ .landing-btn2:hover{
     background-color: transparent;
+    border: 1px solid beige !important;
 }
-
+.landing-btn:hover {
+    background-color: transparent;
+    border: 1px solid rgb(255, 145, 0) !important;
+}
 
 .landing-btn2 {
     background-color: beige;
     color: rgb(255, 145, 0);
     padding: 0;
     border: none;
+    margin-top: 5px;
+
+}
+
+
+
+
+
+
+.form-register {
+    margin-top: 250px;
+    color: white;
+}
+
+.btn-create {
+    width: 200px;
+    margin: auto;
 }
