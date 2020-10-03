@@ -9,7 +9,7 @@ module.exports = function(passport) {
             .then(user => {
                 if(!user) {
                     console.log('did not match user')
-                    return done(null, false, { msg: 'Email or Password incorrect.'})
+                    return done(null, false, { message: 'Email or Password incorrect.'})
                 }
 
                 bcrypt.compare(password, user.password, (err, isMatch) => {
@@ -19,7 +19,7 @@ module.exports = function(passport) {
                         return done(null, user)
                     } else {
                         console.log('did not match password')
-                        return done(null, false, { msg: 'Email or Password incorrect.'})
+                        return done(null, false, { message: 'Email or Password incorrect.'})
                     }
                 })
 
