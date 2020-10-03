@@ -56,7 +56,7 @@ router.post('/register' , (req, res) => {
 router.post('/login', (req, res, next) => {
     console.log(req.body)
     passport.authenticate('local', {
-      successRedirect: '/userdisplay',
+      successRedirect: '/dashboard',
       failureRedirect: '/users/login',
       failureFlash: true
     }) (req, res, next);
@@ -64,6 +64,7 @@ router.post('/login', (req, res, next) => {
 
 router.get('/logout', (req, res) => {
     req.logout();
+    req.flash('success_msg', 'You have sucessfully logged out.')
     res.redirect('/users/login');
 });
 

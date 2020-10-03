@@ -1,10 +1,11 @@
+const session = require('express-session')
 const express = require('express')
 const exphbs = require('express-handlebars')
 const passport = require('passport')
 const path = require('path')
 const flash = require('connect-flash')
-const session = require('express-session')
-
+const app = express()
+require('./config/passport')(passport)
 const db = require('./config/database')
 
 db.authenticate()
@@ -12,17 +13,19 @@ db.authenticate()
 .catch(err => console.log('error occured: '+ err))
 
 
-const app = express()
+
 app.engine('handlebars', exphbs({ defaultLayouts: 'main' }))
 app.set('view engine', 'handlebars')
 
-require('./config/passport')(passport)
-app.use(passport.initialize())
-app.use(passport.session())
+
 
 app.use(express.urlencoded({ extended: true}))
 
-app.use( session({ secret: 'secret-weapon', resave: true, saveUninitialized: true}));
+app.use(session({ secret: 'secret', resave: true, saveUninitialized: true}));
+app.use(passport.initialize())
+app.use(passport.session())
+
+
 
 app.use(flash())
 
