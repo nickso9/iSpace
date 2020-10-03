@@ -52,7 +52,7 @@ table {
     align-items: center;
 }
 
-.landing-jumbo, .container-register {
+.landing-jumbo, .container-register, .container-login {
     background-position: center;
     background-image: url('/images/spaceman2.png');
     background-size: 250px;
@@ -63,7 +63,7 @@ table {
     border-bottom-left-radius: 25%;
     display: flex;
     flex-direction: column;
-    max-width: 600px;
+    /* min-width: 600px !important; */
 }
 
 
@@ -93,11 +93,11 @@ a:hover {
 
  .landing-btn2:hover{
     background-color: transparent;
-    border: 1px solid beige !important;
+    outline: 1px solid beige !important;
 }
 .landing-btn:hover {
     background-color: transparent;
-    border: 1px solid rgb(255, 145, 0) !important;
+    outline: 1px solid rgb(255, 145, 0) !important;
 }
 
 .landing-btn2 {
@@ -109,17 +109,66 @@ a:hover {
 
 }
 
+.form-register-login {
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.form-register-login a{
+    color: rgb(255, 145, 0);
+}
+
+.form-register-login a:hover{
+    text-decoration: underline !important;
+}
 
 
-
+.register-text {
+    font-size: 25px;
+    margin-top: 225px;
+}
 
 
 .form-register {
-    margin-top: 250px;
+    margin-top: 25px;
     color: white;
 }
 
 .btn-create {
+    width: 200px;
+    margin: auto;
+}
+
+
+
+
+
+
+.form-login-register {
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.form-login-register a {
+    color: beige
+}
+
+.form-login-register a:hover {
+    text-decoration: underline !important;
+}
+
+.login-text {
+    font-size: 25px;
+    margin-top: 225px;
+}
+
+
+.form-login {
+    margin-top: 25px;
+    color: white;
+}
+
+.btn-login {
     width: 200px;
     margin: auto;
 }

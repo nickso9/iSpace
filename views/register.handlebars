@@ -1,5 +1,8 @@
 
 <div class="container container-register">
+
+    <span class='register-text text-white'>Register New User:</span>
+
     <form class='form-register' action="/users/register" method="POST"> 
 
         <div class="form-group row d-block mt-1 m-0">
@@ -25,9 +28,14 @@
 
         <div class="form-group row d-block mt-5 m-0">
         <a href='/'>
-        <button type="button" class="btn btn-primary btn-lg btn-block landing-btn btn-create">Create User</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block landing-btn btn-login">Create User</button>
         </a>
         </div>
+
+        <div class="form-register-login">
+            <span class='text-white'>Have an account? <a href="/users/login">Login here</a></span>
+        </div>
+
 
     </form>
 </div>
