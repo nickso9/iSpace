@@ -1,14 +1,17 @@
 
+
+
 module.exports = function(sequelize, DataTypes) {
 const User = sequelize.define('users', {
     email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false
     } 
+    
 });
 
 User.associate = models => {
@@ -18,7 +21,7 @@ User.associate = models => {
 };
 
 User.associate = models => {
-    User.hasOne(models.Profile, {
+    User.hasOne(models.profiles, {
         onDelete: 'cascade'
     })
 };

@@ -1,12 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
-const UserProfile = sequelize.define('Profile', {
+const UserProfile = sequelize.define('profiles', {
     image: {
         type: DataTypes.BLOB,
         allowNull: false
     },
-    user_name: {
+    username: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
 
     birthday: {

@@ -36,6 +36,7 @@ app.use(function(req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
+app.use('/users', require('./routes/dashboard'))
 
 
 const PORT = process.env.PORT || 8080
