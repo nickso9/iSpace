@@ -10,7 +10,6 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
         layout: 'main', 
         user: req.user.email
     })
-    console.log(req.user)
 })
 
 module.exports = router

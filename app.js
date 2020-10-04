@@ -6,11 +6,8 @@ const path = require('path')
 const flash = require('connect-flash')
 const app = express()
 require('./config/passport')(passport)
-const db = require('./config/database')
+const db = require("./models");
 
-db.authenticate()
-.then(() => console.log('connected to database'))
-.catch(err => console.log('error occured: '+ err))
 
 
 
@@ -43,4 +40,6 @@ app.use('/users', require('./routes/users'))
 
 const PORT = process.env.PORT || 8080
 
-app.listen(PORT, console.log(`server started on ${PORT}`))
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, console.log(`server started on ${PORT}`))
+});

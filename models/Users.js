@@ -1,17 +1,33 @@
-const Sequelize = require('sequelize')
-const db = require('../config/database')
 
-const User = db.define('users', {
+module.exports = function(sequelize, DataTypes) {
+const User = sequelize.define('users', {
     email: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     password: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     } 
-})
+});
 
-User.sync()
+User.associate = models => {
+    User.hasMany(models.posts, {
+        onDelete: 'cascade'
+    })
+};
 
-module.exports = User
+User.associate = models => {
+    User.hasOne(models.Profile, {
+        onDelete: 'cascade'
+    })
+};
+    return User;
+}
+
+
+
+
+
+
+
