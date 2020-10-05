@@ -2,7 +2,11 @@
 {{> header }}
  
  
+{{#if dataid}}
 
+<h1 class="display-1">Welcome {{user}}</h1>
+
+{{else}}
 <div class='container lead-reg-div'>
 
 <span class='lead-text'>Finish registration</span>
@@ -45,10 +49,9 @@
         </div>
 </form>
 
-
 </div>
 
-
+{{/if}}
 
 
 
