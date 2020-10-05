@@ -17,7 +17,10 @@ router.post('/dashboard', (req,res,) => {
         headline: req.body.headline,
         userId: userId
     })
-    .then(u => console.log('sucessful creation'))
+    .then(u => {
+        console.log('sucessful creation')
+        res.redirect('../dashboard')
+    })
     .catch(err => console.log('this is error =' +err))
 })
 
