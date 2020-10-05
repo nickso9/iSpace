@@ -11,11 +11,17 @@
 
 <span class='lead-text'>Finish registration</span>
 
-<form class='form-register text-dark' action="/users/dashboard" method="POST">
-  <div class="form-group">
+
+
+  <div class="mt-2">
     <label for="login">Login</label>
     <input type="text" class="form-control" id="login" name="login" value="{{user}}" disabled="true">
   </div>
+
+  <form action='/users/images' method="POST" enctype="multipart/form-data">
+    <button type="submit" class="upload-image-btn">Upload image</button>
+    <input type='file' name='image' id="image">  
+  </form>
 
 
 <form class='form-register text-dark' action="/users/dashboard" method="POST">
@@ -33,6 +39,7 @@
     <label for="location">Location</label>
     <input type="text" class="form-control" id="location" name="location">
   </div>
+
 
   <div class="form-group">
     <label for="headline">Headline</label>

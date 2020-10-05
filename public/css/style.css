@@ -54,7 +54,6 @@ table {
 }
 
 .landing-main {
-    /* background: url('/images/background2.jpg') no-repeat center center fixed; */
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;

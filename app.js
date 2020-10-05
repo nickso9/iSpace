@@ -7,6 +7,7 @@ const flash = require('connect-flash')
 const app = express()
 require('./config/passport')(passport)
 const db = require("./models");
+const { appendFile } = require('fs')
 
 
 
@@ -37,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
 app.use('/users', require('./routes/dashboard'))
-
+app.use('/users', require('./routes/image'))
 
 const PORT = process.env.PORT || 8080
 

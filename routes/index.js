@@ -17,7 +17,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 }
             }
         }
-        console.log(userInfo)
+        // console.log(userInfo)
         res.render('dashboard', { 
         layout: 'main', 
         user: req.user.email,
