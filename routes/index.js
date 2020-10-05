@@ -8,17 +8,20 @@ router.get('/', (req, res) => res.render('index', { layout: 'landing'}))
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     db.users.findOne({ where: { id: req.user.id }, include: 'profile', raw: true}).then(userdata => {
-        let data = ""
+        let userInfo = {}
         if (userdata.profile !== null) {
             for (const [key, value] of Object.entries(userdata))  {
-                key == 'profile.id' ? data = value : ""
+                if (key.match(/profile/g)) {
+                    newKey = key.replace(".","")
+                    userInfo[newKey] = value
+                }
             }
         }
-        console.log('this is data'+data)
+        console.log(userInfo)
         res.render('dashboard', { 
         layout: 'main', 
         user: req.user.email,
-        dataid: data
+        dataid: userInfo
     })
     })
 })
