@@ -7,6 +7,7 @@ const Profile = db.profiles
 
 router.post('/dashboard', (req,res,) => {
     let userId = req.session.passport.user
+
     Profile.create({
         image: 'thisisanmage',
         username: req.body.username,

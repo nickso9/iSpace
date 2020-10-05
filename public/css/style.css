@@ -43,6 +43,16 @@ table {
 	border-spacing: 0;
 }
 
+.header-img {
+    height: 50px;
+    border-bottom: 1px black solid;
+}
+
+.navbar-brand {
+    color: black;
+    font-size: 34px;
+}
+
 .landing-main {
     /* background: url('/images/background2.jpg') no-repeat center center fixed; */
     background-repeat: no-repeat;
