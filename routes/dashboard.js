@@ -11,15 +11,14 @@ router.post('/dashboard', (req,res,) => {
     Profile.create({
         image: 'thisisanmage',
         username: req.body.username,
-        birthday: "10/15/10",
-        // req.body.birthday,    
+        birthday: req.body.birthday,
         location: req.body.location,
-        bio: "this is a bio",
-        // req.body.bio,
-        headline: "this is a headline",
-        // req.body.headline,
+        bio: req.body.bio,
+        headline: req.body.headline,
         userId: userId
     })
+    .then(u => console.log('sucessful creation'))
+    .catch(err => console.log('this is error =' +err))
 })
 
 

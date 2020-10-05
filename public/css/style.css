@@ -187,3 +187,15 @@ a:hover {
     width: 200px;
     margin: auto;
 }
+
+
+/* register page */
+
+.lead-text {
+    font-size: 25px;
+
+}
+
+.lead-reg-div {
+    margin-top: 50px;
+}

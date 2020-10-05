@@ -41,6 +41,9 @@ router.post('/register' , (req, res) => {
                         db.users.create({
                             email: newUser.email,
                             password: newUser.password
+                        }, {
+                            include: 'posts',
+                            include: 'profile'
                         })
                         .then(user => {
                             req.flash('success_msg', 'You have successfully registered.')
