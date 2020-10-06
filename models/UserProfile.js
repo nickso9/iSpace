@@ -1,8 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
 const UserProfile = sequelize.define('profiles', {
     image: {
-        type: DataTypes.BLOB,
-        allowNull: false
+        type: DataTypes.STRING,
     },
     username: {
         type: DataTypes.STRING,

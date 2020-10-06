@@ -2,6 +2,7 @@ const express = require('express')
 const db = require("../models")
 const router = express.Router()
 const cloudinary = require("cloudinary");
+const Profile = db.profiles
 
 cloudinary.config({
     cloud_name: 'dv1oijudu',
@@ -14,15 +15,22 @@ router.post('/images', (req, res, next) => {
     const file = req.files.image
     const userId = req.session.passport.user
 
-    // console.log(file)
-    // cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
-    //     if (err) throw err;
-    //     console.log(result)
-    //     res.status(200)
-    // })
+    cloudinary.uploader.upload(file.tempFilePath)
+    .then(result => {
+        console.log(result.url)
+        Profile.update({ image: result.url},{ where: {userId} })
+        .then(user => {
+            console.log('image updated...')
+            res.redirect('../dashboard')
+        })
+        .catch(err => console.log(err))
 
-    console.log('done')
+        })
+    .catch(err => console.log(err))
+
 })
+    
+
 
 
 module.exports = router

@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
 
-
 router.get('/login', (req, res) => res.render('login', { layout: 'landing'}))
 router.get('/register', (req, res) => res.render('register', { layout: 'landing'}))
 
@@ -48,6 +47,7 @@ router.post('/register' , (req, res) => {
                         .then(user => {
                             req.flash('success_msg', 'You have successfully registered.')
                             res.redirect('/users/login')
+                        
                         })
                         .catch(err => console.log(err))
                 }))
