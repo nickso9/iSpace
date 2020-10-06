@@ -18,10 +18,11 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 }
             }
         }
-        console.log(userInfo)
+        var imageCheck = false
         var imageid = './images/150.png'
         if (userInfo.profileimage != 1) {
             imageid = userInfo.profileimage
+            setTimeout(() => imageCheck = true , 2000)      
         }
 
         console.log(imageid)
@@ -29,9 +30,12 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
         layout: 'main', 
         user: req.user.email,
         dataid: userInfo,
-        imageid: imageid
+        imageid: imageid,
+        imageCheck: imageCheck
     })
     })
+
+
 })
 
 module.exports = router
