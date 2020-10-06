@@ -1,0 +1,86 @@
+
+{{> header }}
+ 
+{{#unless dataid.profileid}}
+
+    <div class='container lead-reg-div'>
+
+        <div class="d-block lead-text mb-4">
+          <span>Finish registration</span><span class='float-right'><span class="text-warning">1</span><span class="text-success"> / 2</span></span>
+        </div>
+
+        <div class="mt-2">
+          <label for="login">Login</label>
+          <input type="text" class="form-control" id="login" name="login" value="{{user}}" disabled="true">
+        </div>
+
+      <form class='form-register text-dark' action="/users/registration" method="POST">
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input type="text" class="form-control" id="username" name="username" value="{{dataid.profileusername}}">
+        </div>
+
+        <div class="form-group">
+          <label for="birthday">Birthday:</label>
+          <input type="date" class="form-control" id="birthday" name="birthday" value="{{dataid.profilebirthday}}">
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" class="form-control" id="location" name="location" value="{{dataid.profilelocation}}">
+        </div>
+
+        <div class="form-group">
+          <label for="headline">Headline</label>
+          <input type="text" class="form-control" id="headline" name="headline" value="{{dataid.profileheadline}}">
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea type="text" class="form-control" id="bio" name="bio" rows="3">{{dataid.profilebio}}</textarea>
+        </div>
+
+          {{#if error_msg}}
+          <span class="text-danger warning-class">{{error_msg}}</span>
+          {{/if}}
+
+        <div class="form-group row d-block mt-5 m-0">
+            <button type="submit" class="btn btn-primary btn-lg btn-block landing-btn">Next</button>
+        </div>
+        </form>
+    </div>
+
+{{else}}
+
+
+    <div class='container lead-reg-div'>
+
+        <div class="d-block lead-text mb-4">
+        <span>Finish registration</span><span class='float-right text-success'>2 / 2</span>
+        </div>
+
+        <div class="mt-5 mb-5 text-center">
+          <form class="mt-2 mb-5" action='/users/images' method="POST" enctype="multipart/form-data">
+          <label for="image" class="d-block">Upload profile image to finish registration.</label>
+          <input class='d-block mx-auto mt-4 mb-2 border border-1' type='file' name='image' id="image"> 
+          <div class='d-inline-flex mt-4'>
+              <img src="{{imageid}}">
+          </div>
+
+        
+
+            
+                <button type="submit" class="upload-image-btn d-block mx-auto mt-3">Upload image</button>
+                 
+            </form>
+        </div>
+
+          <a href='/registration'>
+            <button type="submit" class="btn btn-primary btn-lg btn-block landing-btn" style="margin-top: 220px" name="complete">Complete registration</button>
+          </a>
+        </div>
+
+        
+    </div>
+
+{{/unless}}
