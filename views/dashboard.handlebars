@@ -2,52 +2,57 @@
 {{> header }}
  
  
-{{#if dataid.profileuserId}}
+{{#if dataid.jfjf}}
 
 <h1 class="display-1">Welcome {{user}}</h1>
 
 {{else}}
 <div class='container lead-reg-div'>
 
-<span class='lead-text'>Finish registration</span>
+<span class='lead-text d-block mb-4'>Finish registration</span>
 
 
+  <div class='d-inline-flex'>
+       <img src="./images/150.png">
+    </div>
 
-  <div class="mt-2">
-    <label for="login">Login</label>
-    <input type="text" class="form-control" id="login" name="login" value="{{user}}" disabled="true">
-  </div>
 
-  <form action='/users/images' method="POST" enctype="multipart/form-data">
+  
+
+  <form class="mt-2" action='/users/images' method="POST" enctype="multipart/form-data">
     <button type="submit" class="upload-image-btn">Upload image</button>
     <input type='file' name='image' id="image">  
   </form>
 
+<div class="mt-2">
+    <label for="login">Login</label>
+    <input type="text" class="form-control" id="login" name="login" value="{{user}}" disabled="true">
+  </div>
 
 <form class='form-register text-dark' action="/users/dashboard" method="POST">
   <div class="form-group">
     <label for="username">User Name</label>
-    <input type="text" class="form-control" id="username" name="username">
+    <input type="text" class="form-control" id="username" name="username" value="{{dataid.profilebirthday}}">
   </div>
 
   <div class="form-group">
     <label for="birthday">Birthday:</label>
-  <input type="date" class="form-control" id="birthday" name="birthday">
+  <input type="date" class="form-control" id="birthday" name="birthday" min="1900-01-01" value="{{dataid.profilebirthday}}">
   </div>
 
   <div class="form-group">
     <label for="location">Location</label>
-    <input type="text" class="form-control" id="location" name="location">
+    <input type="text" class="form-control" id="location" name="location" value="{{dataid.profilelocation}}">
   </div>
 
 
   <div class="form-group">
     <label for="headline">Headline</label>
-    <input type="text" class="form-control" id="headline" name="headline">
+    <input type="text" class="form-control" id="headline" name="headline" value="{{dataid.profileheadline}}">
   </div>
   <div class="form-group">
     <label for="bio">Bio</label>
-    <textarea type="text" class="form-control" id="bio" name="bio" rows="3"></textarea>
+    <textarea type="text" class="form-control" id="bio" name="bio" rows="3">{{dataid.profilebio}}</textarea>
   </div>
 
 

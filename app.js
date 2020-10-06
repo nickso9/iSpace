@@ -7,7 +7,7 @@ const flash = require('connect-flash')
 const app = express()
 require('./config/passport')(passport)
 const db = require("./models");
-const { appendFile } = require('fs')
+const fileUpload = require('express-fileupload');
 
 
 
@@ -18,11 +18,11 @@ app.set('view engine', 'handlebars')
 
 
 app.use(express.urlencoded({ extended: true}))
-
 app.use(session({ secret: 'secret', resave: true, saveUninitialized: true}));
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(fileUpload({ useTempFiles: true}))
 
 
 app.use(flash())

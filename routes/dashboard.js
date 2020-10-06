@@ -6,6 +6,8 @@ const Profile = db.profiles
 
 
 router.post('/dashboard', (req,res,) => {
+    console.log(req.body)
+
     let userId = req.session.passport.user
 
     Profile.create({

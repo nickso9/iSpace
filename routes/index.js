@@ -7,6 +7,7 @@ const { ensureAuthenticated } = require('../config/auth');
 router.get('/', (req, res) => res.render('index', { layout: 'landing'}))
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
+    console.log(req.body)
     db.users.findOne({ where: { id: req.user.id }, include: 'profile', raw: true}).then(userdata => {
         let userInfo = {}
         if (userdata.profile !== null) {
@@ -17,7 +18,6 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 }
             }
         }
-        // console.log(userInfo)
         res.render('dashboard', { 
         layout: 'main', 
         user: req.user.email,
