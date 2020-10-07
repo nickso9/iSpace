@@ -5,13 +5,12 @@ const { ensureAuthenticated } = require('../config/auth');
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     db.users.findOne({ where: { id: req.user.id }, raw: true}).then(userdata => {
-        if (userdata.regDone == null) {
+        console.log('get dashboard = '+userdata.regDone)
+        if (userdata.regDone == 0) {
             res.redirect('../registration')
         } else {
+            console.log('in get dashboard')
             res.render('dashboard', { layout: 'main'})
-
-
-
         }
 
     })

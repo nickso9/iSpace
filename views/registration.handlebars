@@ -64,7 +64,7 @@
           <label for="image" class="d-block">Upload profile image to finish registration.</label>
           <input class='d-block mx-auto mt-4 mb-2 border border-1' type='file' name='image' id="image"> 
           <div class='d-inline-flex mt-4'>
-              <img src="{{imageid}}">
+              <img id="img-check" src="{{imageid}}">
           </div>
 
         
@@ -74,10 +74,9 @@
                  
             </form>
         </div>
-
-          <a href='/registration'>
-            <button type="submit" class="btn btn-primary btn-lg btn-block landing-btn" style="margin-top: 220px" name="complete">Complete registration</button>
-          </a>
+        
+            <span id="error-pic" class="text-danger warning-class" style="margin-top: 200px; display: none">Please upload an image.</span>
+            <button type="submit" class="btn btn-primary btn-lg btn-block landing-btn"  style="margin-top: 220px;" id="complete-reg">Complete registration</button>
         </div>
 
         

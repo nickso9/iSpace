@@ -18,7 +18,7 @@ router.post('/images', (req, res, next) => {
     const file = req.files.image
     const userId = req.session.passport.user
     const eager_options = { width: 150, height: 150, crop: 'scale'};
-    User.update({ regDone: true},{ where: {id: userId} })
+    // User.update({ regDone: true},{ where: {id: userId} })
 
     cloudinary.uploader.upload(file.tempFilePath, eager_options)
     .then(result => {

@@ -12,7 +12,8 @@ const User = sequelize.define('users', {
         allowNull: false
     },
     regDone: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.STRING,
+        defaultValue: 0
     } 
     
 });

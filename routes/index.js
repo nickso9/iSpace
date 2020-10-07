@@ -8,7 +8,8 @@ router.get('/', (req, res) => res.render('index', { layout: 'landing'}))
 
 router.get('/registration', ensureAuthenticated, (req, res) => {
 
-    if (req.user.dataValues.regDone == null) {
+        
+    if (req.user.dataValues.regDone == 0) {
 
             db.users.findOne({ where: { id: req.user.id }, include: 'profile', raw: true}).then(userdata => {
                 let userInfo = {}
@@ -20,23 +21,21 @@ router.get('/registration', ensureAuthenticated, (req, res) => {
                         }
                     }
                 }
-                var imageCheck = false
                 var imageid = './images/150.png'
-                if (userInfo.profileimage != 1) {
+                if (userInfo.profileimage != 0) {
                     imageid = userInfo.profileimage
-                    setTimeout(() => imageCheck = true , 2000)      
                 }
 
                 res.render('registration', { 
-                layout: 'main', 
+                layout: 'landing', 
                 user: req.user.email,
                 dataid: userInfo,
                 imageid: imageid,
-                imageCheck: imageCheck
             })
             })
 
     } else {
+        console.log('redirect here')
         res.redirect('/users/dashboard')
     }
 
