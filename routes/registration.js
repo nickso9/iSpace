@@ -24,23 +24,36 @@ router.post('/registration', (req,res) => {
                     req.flash('error_msg', 'Please fill out all fields.')
                     res.redirect('../registration')
 
+        } else {
+
+            Profile.findOne({ where: { username: req.body.username }}).then(userdata => {
+
+                if (userdata) {
+
+                    req.flash('error_msg', 'User name already exists.')
+                    res.redirect('../registration')
+
                 } else {
-                    
-        Profile.create({
-            image: 0,
-            username: req.body.username,
-            birthday: req.body.birthday,
-            location: req.body.location,
-            bio: req.body.bio,
-            headline: req.body.headline,
-            userId: userId
-        })
-        .then(e => {
-            console.log('sucessful creation')
-            res.redirect('../registration')
-        })
-        .catch(err => console.log('this is error =' +err))
-            }
+
+                Profile.create({
+                    image: 0,
+                    username: req.body.username,
+                    birthday: req.body.birthday,
+                    location: req.body.location,
+                    bio: req.body.bio,
+                    headline: req.body.headline,
+                    userId: userId
+                })
+                .then(e => {
+                    console.log('sucessful creation')
+                    res.redirect('../registration')
+                })
+                .catch(err => console.log('this is error =' +err))
+
+                }
+            })      
+        
+        }
     }
 })
 
