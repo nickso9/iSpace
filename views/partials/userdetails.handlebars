@@ -1,18 +1,18 @@
 
 
-<div class="container user-profile bg-light">
-    <div class="d-inline">
-        <p><span class="profile-text">Profile Picture:</span></p>
-        <img src='{{user.profileimage}}' class="d-inline mt-1">
+<div class="container user-profile bg-light d-flex">
+    <div class="d-inline mr-4">
+        {{!-- <p><span class="profile-text">Profile Picture:</span></p> --}}
+        <img src='{{user.profileimage}}' class="d-inline mt-4 profile-image">
     </div>
 
     <div class="d-inline mt-2">
-        <p class="mt-2"><span class="profile-text">Email:</span> {{user.email}}</p>
-        <p class="mt-2"><span class="profile-text">Username:</span> {{user.profileusername}}</p>
-        <p class="mt-2"><span class="profile-text">Headline:</span> {{user.profileheadline}}</p>
-        <p class="mt-2"><span class="profile-text">Birthday:</span> {{user.profilebirthday}}</p>
-        <p class="mt-2"><span class="profile-text">Location:</span> {{user.profilelocation}}</p>
-        <p class="mt-2"><span class="profile-text">Profile:</span> {{user.profilebio}}</p>
+        {{!-- <p class="mt-2"><span class="profile-text">Email:</span> <span class='profile-bio-text'>{{user.email}}</span></p> --}}
+        <p class="mt-2 d-block"><span class="profile-text">Username:</span></p> <span class='profile-bio-text'>{{user.profileusername}}</span>
+        <p class="mt-2 d-block"><span class="profile-text">Headline:</span> </p><span class='profile-bio-text'>{{user.profileheadline}}</span>
+        {{!-- <p class="mt-2"><span class="profile-text">Birthday:</span> <span class='profile-bio-text'>{{user.profilebirthday}}</span></p> --}}
+        <p class="mt-2 d-block"><span class="profile-text">Location:</span></p> <span class='profile-bio-text'>{{user.profilelocation}}</span>
+        <p class="mt-2 d-block"><span class="profile-text">Bio:</span> </p><span class='profile-bio-text'>{{user.profilebio}}</span>
 
     </div>
     

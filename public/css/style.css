@@ -237,5 +237,10 @@ a:hover {
 }
 
 .profile-text {
-    color: rgb(255, 145, 0)
+    color: rgb(255, 145, 0);
+    font-size: 12px;
+}
+
+.profile-image {
+    border-radius: 25%;
 }
