@@ -28,7 +28,7 @@ router.post('/images', (req, res, next) => {
     cloudinary.uploader.upload(file.tempFilePath, eager_options)
     .then(result => {
         
-        Profile.update({ image: result.url},{ where: {userId} })
+        Profile.update({ image: result.url },{ where: {userId} })
 
         .then(user => {
             console.log('image updated...')

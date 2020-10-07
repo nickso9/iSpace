@@ -53,6 +53,15 @@ table {
     font-size: 34px;
 }
 
+.logout-btn {
+    border-color: black;
+    text-decoration: none !important;
+
+}
+.logout-btn a{
+    color: orange;
+}
+
 .landing-main {
     background-repeat: no-repeat;
     background-size: cover;

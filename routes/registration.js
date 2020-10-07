@@ -18,7 +18,7 @@ router.post('/registration', (req,res) => {
 
     } else {
     
-        if (req.body.username.length < 3 || !req.body.username.match(/\W/) || req.body.birthday.length < 7 
+        if (req.body.username.length < 3 || req.body.birthday.length < 7 
             || req.body.location.length < 3 || req.body.headline.length < 2
             || req.body.bio.length < 4) {
                     req.flash('error_msg', 'Please fill out all fields.')
