@@ -35,7 +35,6 @@ router.get('/registration', ensureAuthenticated, (req, res) => {
             })
 
     } else {
-        console.log('redirect here')
         res.redirect('/users/dashboard')
     }
 
