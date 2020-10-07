@@ -41,6 +41,8 @@ app.use('/users', require('./routes/registration'))
 app.use('/users', require('./routes/image'))
 app.use('/users', require('./routes/dashboard'))
 
+
+
 const PORT = process.env.PORT || 8080
 
 db.sequelize.sync({ force: false }).then(function() {
