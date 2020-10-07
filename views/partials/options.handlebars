@@ -3,16 +3,16 @@
 <div class="container">
 
 
-        <div class="d-flex-block lead-text mt-4">
+        <div class="lead-text mt-2">
           <span>Update Profile: </span>
         </div>
 
 
-    <div class='lead-reg-div d-flex-inline'>
+    <div class='lead-reg-div d-flex-inline flex-wrap'>
 
-        <div class="d-inline float-right text-center m-0 p-0">
-            <form class="mt-2 mx-auto" action='/users/images' method="POST" enctype="multipart/form-data">
-                <input class='d-block mt-4 mb-2 border border-1' type='file' name='image' id="image-update"> 
+        <div class="float-picture float-right text-center ml-1">
+            <form class="mx-auto" action='/users/images' method="POST" enctype="multipart/form-data">
+                <input class='d-block mt-4 mb-2 border border-1 mx-auto' type='file' name='image' id="image-update"> 
                 <div class='d-inline-flex mt-4'>
                     <img id="img-check" src="{{user.profileimage}}">
                 </div>

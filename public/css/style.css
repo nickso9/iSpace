@@ -275,3 +275,12 @@ a:hover {
 .upload-image-pagebtn {
     margin: auto;
 }
+
+
+@media (max-width: 550px) {
+
+div.float-picture {
+    float: none !important;
+}
+
+}
