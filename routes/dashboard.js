@@ -23,7 +23,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             }
             console.log(user)
 
-            res.render('dashboard', { layout: 'main'})
+            res.render('dashboard', { layout: 'main', user})
         }
 
     })

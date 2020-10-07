@@ -18,11 +18,11 @@ const UserProfile = sequelize.define('profiles', {
         allowNull: false
     },
     bio: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     headline: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
    

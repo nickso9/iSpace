@@ -229,3 +229,13 @@ a:hover {
     background-color: rgb(255, 145, 0) !important;
     box-shadow: none !important;
 }
+
+/* user details  */
+
+.user-profile{
+    border-bottom: 1px black solid;
+}
+
+.profile-text {
+    color: rgb(255, 145, 0)
+}
