@@ -4,8 +4,6 @@ const router = express.Router()
 const Profile = db.profiles
 const User = db.users
 
-
-
 router.post('/registration', (req,res) => {
     let userId = req.session.passport.user
     console.log(req.body.checkpicture)
@@ -14,7 +12,6 @@ router.post('/registration', (req,res) => {
     if (req.body.checkpicture && req.user.dataValues.regDone == 0) {
        User.update({ regDone: 1},{ where: {id: userId} })
        .then(() => {
-           console.log('then')
             res.redirect('/users/dashboard')
         })
         .catch(err => console.log(err))

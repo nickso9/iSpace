@@ -2,8 +2,11 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(module.filename);
-const sequelize = new Sequelize('ispace', 'root', '12345' , {
-    host: 'localhost',
+const dotenv = require('dotenv')
+dotenv.config()
+
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD , {
+    host: process.env.DB_HOST,
     dialect: 'mysql',
     pool: {
         max: 5,
