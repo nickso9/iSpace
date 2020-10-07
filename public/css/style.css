@@ -53,13 +53,17 @@ table {
     font-size: 34px;
 }
 
+.nav-bar-main {
+    background-color: rgb(32, 92, 184);;
+}
+
 .logout-btn {
     border-color: black;
     text-decoration: none !important;
 
 }
 .logout-btn a{
-    color: orange;
+    color: beige;
 }
 
 .landing-main {
@@ -76,7 +80,7 @@ table {
     background-size: 250px;
     background-repeat: no-repeat;
     height: 800px !important;
-    background-color: grey;
+    background-color: rgb(32, 92, 184);
     border-bottom-right-radius: 25%;
     border-bottom-left-radius: 25%;
     display: flex;
@@ -231,9 +235,22 @@ a:hover {
 }
 
 /* user details  */
+.nav-div a{
+    color: black  
+}
+
+.nav-tabs {
+    border-bottom: 1px solid black;
+}
+
+.nav-item a.nav-link.active {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+}
 
 .user-profile{
-    border-bottom: 1px black solid;
+    /* border-bottom: 1px black solid; */
 }
 
 .profile-text {
