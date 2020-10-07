@@ -1,0 +1,76 @@
+
+
+<div class="container">
+
+
+        <div class="d-flex-block lead-text mt-4">
+          <span>Update Profile: </span>
+        </div>
+
+
+    <div class='lead-reg-div d-flex-inline'>
+
+        <div class="d-inline float-right text-center m-0 p-0">
+            <form class="mt-2 mx-auto" action='/users/images' method="POST" enctype="multipart/form-data">
+                <input class='d-block mt-4 mb-2 border border-1' type='file' name='image' id="image-update"> 
+                <div class='d-inline-flex mt-4'>
+                    <img id="img-check" src="{{user.profileimage}}">
+                </div>
+            <span class="d-block" style="font-size: 12px">Images will be resized to 150 x 150</span>
+            <button type="submit" class="upload-image-pagebtn d-block mt-3">Upload image</button>
+        </div>
+
+
+        <div class='d-flex flex-column'>
+
+                <div class="mt-2 d-flex-block">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" id="login" name="login" value="{{user.email}}" disabled="true">
+                </div>
+
+                <form class='form-register text-dark' action="/users/registration" method="POST">
+                <div class="form-group">
+                    <label for="username">User Name</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{user.profileusername}}" disabled="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="birthday">Birthday</label>
+                    <input type="text" class="form-control" id="birthday" name="birthday" value="{{user.profilebirthday}}" disabled="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" id="location" name="location" value="{{user.profilelocation}}">
+                </div>
+
+        </div>
+
+                <div class="form-group">
+                    <label for="headline">Headline</label>
+                    <input type="text" class="form-control" id="headline" name="headline" value="{{user.profileheadline}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea type="text" class="form-control" id="bio" name="bio" rows="3">{{user.profilebio}}</textarea>
+                </div>
+
+        
+          {{!-- {{#if error_msg}}
+          <span class="text-danger warning-class">{{error_msg}}</span>
+          {{/if}} --}}
+
+        <div class="form-group row d-block mt-5 m-0">
+            <button type="submit" class="btn btn-primary btn-lg btn-block update-btn">Update</button>
+        </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+</div>

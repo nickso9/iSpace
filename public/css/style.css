@@ -45,7 +45,7 @@ table {
 
 .header-img {
     height: 50px;
-    border-bottom: 1px black solid;
+    border-bottom: 1px solid white;
 }
 
 .navbar-brand {
@@ -54,7 +54,7 @@ table {
 }
 
 .nav-bar-main {
-    background-color: rgb(32, 92, 184);;
+    background-color: rgb(32, 92, 184);
 }
 
 .logout-btn {
@@ -260,4 +260,18 @@ a:hover {
 
 .profile-image {
     border-radius: 25%;
+}
+
+/* options tab */
+
+.update-btn {
+    background-color: rgb(32, 92, 184);
+}
+
+#image-update {
+    width: 225px;
+}
+
+.upload-image-pagebtn {
+    margin: auto;
 }
