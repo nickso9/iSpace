@@ -1,8 +1,9 @@
 
 
+
+/// Update bio/location/headline ///
+
 $('.update-btn').on('click', (e) => {
-    console.log('jfjfjf')
-    // e.preventDefault()
     const location = $('#location').val()
     const headline = $('#headline').val()
     const bio = $('#bio').val()
@@ -31,3 +32,6 @@ $('.update-btn').on('click', (e) => {
    }
     
 })
+
+
+

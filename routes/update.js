@@ -19,12 +19,7 @@ router.put('/:id', (req,res) => {
              res.sendStatus(200)
          })
          .catch(err => console.log(err))
-
     }
-
-
-   
-
 })
 
 

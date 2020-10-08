@@ -35,8 +35,8 @@ app.use(function(req, res, next) {
     next();
   });
 
-app.use(express.static(path.join(__dirname, 'public'), { redirect : false }))
-app.all('/', require('./routes/index'))
+app.use(express.static(path.join(__dirname, 'public')))
+app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
 app.use('/users', require('./routes/registration'))
 app.use('/users', require('./routes/image'))
