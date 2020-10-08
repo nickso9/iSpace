@@ -46,6 +46,6 @@ app.use('/users', require('./routes/update'))
 
 const PORT = process.env.PORT || 8080
 
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, console.log(`server started on ${PORT}`))
 });

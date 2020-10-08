@@ -3,6 +3,7 @@ const db = require("../models")
 const router = express.Router()
 const Profile = db.profiles
 const User = db.users
+const Post = db.posts
 
 router.post('/registration', (req,res) => {
     let userId = req.session.passport.user
@@ -44,6 +45,11 @@ router.post('/registration', (req,res) => {
                     headline: req.body.headline,
                     userId: userId
                 })
+
+                Post.create({
+                    userId: userId
+                })
+
                 .then(e => {
                     console.log('sucessful creation')
                     res.redirect('../registration')
