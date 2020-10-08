@@ -276,8 +276,16 @@ a:hover {
     margin: auto;
 }
 
- 
+.wall-btn {
+    background-color: rgb(32, 92, 184);
+    color: beige;
+}
 
+/* wall tab */
+
+#small-error-update {
+    font-size: 12px;
+}
 
 
 @media (max-width: 550px) {

@@ -42,10 +42,10 @@ app.use('/users', require('./routes/registration'))
 app.use('/users', require('./routes/image'))
 app.use('/users', require('./routes/dashboard'))
 app.use('/users', require('./routes/update'))
-
+app.use('/users/', require('./routes/posts'))
 
 const PORT = process.env.PORT || 8080
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, console.log(`server started on ${PORT}`))
 });

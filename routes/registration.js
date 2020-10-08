@@ -46,9 +46,9 @@ router.post('/registration', (req,res) => {
                     userId: userId
                 })
 
-                Post.create({
-                    userId: userId
-                })
+                // Post.create({
+                //     userId: userId
+                // })
 
                 .then(e => {
                     console.log('sucessful creation')
