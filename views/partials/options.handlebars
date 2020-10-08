@@ -28,7 +28,7 @@
                     <input type="text" class="form-control" id="login" name="login" value="{{user.email}}" disabled="true">
                 </div>
 
-                <form class='form-register text-dark' action="/users/registration" method="POST">
+                <form class='form-update text-dark' action="" method="">
                 <div class="form-group">
                     <label for="username">User Name</label>
                     <input type="text" class="form-control" id="username" name="username" value="{{user.profileusername}}" disabled="true">
@@ -57,14 +57,12 @@
                 </div>
 
         
-          {{!-- {{#if error_msg}}
-          <span class="text-danger warning-class">{{error_msg}}</span>
-          {{/if}} --}}
-
+          <div class="text-danger text-center" id="img-error-msg">{{error_msg}}</div>
+          
         <div class="form-group row d-block mt-5 m-0">
-            <button type="submit" class="btn btn-primary btn-lg btn-block update-btn">Update</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block update-btn" id="{{user.profileuserId}}">Update</button>
         </div>
-        </form>
+        {{!-- </form> --}}
     </div>
 
 

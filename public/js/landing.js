@@ -11,12 +11,13 @@ $('#complete-reg').on('click', () => {
     } else {
 
     $.ajax('/users/registration', {
-    type: 'POST',
+    method: 'POST',
     data: {checkpicture: true}
     })
     .then(() => {
         location.reload()
     })
+    .catch(err => console.log(err))
     }
 })
 
