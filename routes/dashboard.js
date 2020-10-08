@@ -21,7 +21,6 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                     user[newKey] = value
                 }
             }
-            console.log(user)
 
             res.render('dashboard', { layout: 'main', user})
         }

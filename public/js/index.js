@@ -1,24 +1,33 @@
 
 
 $('.update-btn').on('click', (e) => {
-    e.preventDefault()
-    console.log(e.target.id)
+    console.log('jfjfjf')
+    // e.preventDefault()
+    const location = $('#location').val()
+    const headline = $('#headline').val()
+    const bio = $('#bio').val()
+    
+    if (!location || !headline || !bio) {
+        $('#error-update').show()
+    } else {
+
     let updateUser = {
         id: e.target.id,
-        location: $('#location').val(),
-        headline: $('#location').val(),
-        bio: $('#location').val()
+        location, 
+        headline,
+        bio 
     }
-    
 
     $.ajax(`/users/${e.target.id}`, {
         method: 'PUT',
         data: updateUser
         })
         .then(() => {
-            console.log('updated')
+            setTimeout(function(){
+                window.location.reload();
+         }, 1000);
         })
         .catch(err => console.log(err))
-
+   }
     
 })
