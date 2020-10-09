@@ -15,7 +15,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 attributes: ['image', 'username', 'birthday', 'location', 'bio', 'headline']  
             },{
                 model: db.posts,
-                attributes: ['headline', 'text', 'createdAt', 'id'],
+                attributes: ['headline', 'text', 'createdAt', 'userId', 'id'],
             }
         ],
        
@@ -41,8 +41,6 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 posts: arr,
                 profile: profile.dataValues,
             }
-            
-
             res.render('dashboard', { layout: 'main', user })
         }
 

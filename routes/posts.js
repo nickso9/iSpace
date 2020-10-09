@@ -22,7 +22,14 @@ router.put('/:id/posts', (req,res) => {
     
 })
 
+router.delete('/:id/posts', (req,res) => {
+    let { postId, userId } = req.body
+    console.log(postId)
+    console.log(userId)
 
+
+
+})
 
 
 module.exports = router

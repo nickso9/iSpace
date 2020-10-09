@@ -68,3 +68,28 @@ $('.post-form').on('submit', (e) => {
     }
 
 })
+
+// delete post //
+
+$('.wall-delete-btn').on('click', (e) => {
+    const j = e.target
+    const delData = { 
+    postId: $(j).parents('.card').attr('id'),
+    userId:e.target.id 
+ 
+    }
+    console.log(delData)
+     $.ajax(`/users/${delData.userId}/posts`, {
+         method: 'DELETE',
+         data: delData
+         })
+         .then(() => {
+         //     setTimeout(function(){
+         //         window.location.reload();
+         //  }, 1000);
+         })
+         .catch(err => console.log(err))
+    
+     
+})
+

@@ -43,11 +43,4 @@ router.post('/images', (req, res, next) => {
     
 
 
-
- // const checkDashboard = req.header('Referer').split("/").filter(e => e == 'dashboard')
-    // const checkRegistration = req.header('Referer').split("/").filter(e => e == 'registration')
-    // console.log(checkDashboard.length > 0)
-    // console.log(checkRegistration.length > 0)
-
-
 module.exports = router
