@@ -24,10 +24,14 @@ router.put('/:id/posts', (req,res) => {
 
 router.delete('/:id/posts', (req,res) => {
     let { postId, userId } = req.body
-    console.log(postId)
-    console.log(userId)
-
-
+    Post.destroy({
+        where: {
+            id: postId
+        }
+    }).then(() => {
+        res.sendStatus(200) 
+    })
+    .catch(err => console.log(err))
 
 })
 

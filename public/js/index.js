@@ -84,9 +84,9 @@ $('.wall-delete-btn').on('click', (e) => {
          data: delData
          })
          .then(() => {
-         //     setTimeout(function(){
-         //         window.location.reload();
-         //  }, 1000);
+             setTimeout(function(){
+                 window.location.reload();
+          }, 1000);
          })
          .catch(err => console.log(err))
     
