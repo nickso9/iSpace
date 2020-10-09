@@ -260,6 +260,7 @@ a:hover {
 
 .profile-image {
     border-radius: 25%;
+    
 }
 
 /* options tab */
@@ -286,6 +287,21 @@ a:hover {
 #small-error-update {
     font-size: 12px;
 }
+
+.created-by {
+    font-size: 10px
+}
+
+.card-header {
+border: 1px solid rgb(255, 145, 0);
+}
+
+.card-body {
+    border-bottom: 1px solid rgb(32, 92, 184);
+    border-right: 1px solid rgb(32, 92, 184);
+    border-left: 1px solid rgb(32, 92, 184);
+}
+
 
 
 @media (max-width: 550px) {

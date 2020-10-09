@@ -20,14 +20,23 @@
     <button type="submit" class="btn btn-primary ml-auto wall-btn">Post</button>
 </form>
 
-
-
 <ul>
   {{#each user.posts}}
-    <li>{{this.dataValues.headline}}</li>
-    <li>{{this.dataValues.text}}</li>
-    <li>{{this.dataValues.createdAt}}</li>
-    <br>
+        <div class="card mt-2">
+  <div class="card-header">
+      
+    <img src="{{this.image}}" style="height: 50px;"><span>{{this.username}}</span>
+   
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{this.headline}}</h5>
+    <p class="card-text">{{this.text}}</p>
+    
+    <a href="#" class="btn btn-primary">delete</a>
+    <p class="created-by">{{this.createdAt}}</p>
+  </div>
+</div>
+    
   {{/each}}
 </ul>
 
