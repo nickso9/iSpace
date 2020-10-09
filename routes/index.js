@@ -7,8 +7,7 @@ const { ensureAuthenticated } = require('../config/auth');
 router.get('/', (req, res) => res.render('index', { layout: 'landing'}))
 
 router.get('/registration', ensureAuthenticated, (req, res) => {
-
-        
+     
     if (req.user.dataValues.regDone == 0) {
 
             db.users.findOne({ where: { id: req.user.id }, include: 'profile', raw: true}).then(userdata => {

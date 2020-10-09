@@ -14,7 +14,7 @@
             <form class="mx-auto" action='/users/images' method="POST" enctype="multipart/form-data">
                 <input class='d-block mt-4 mb-2 border border-1 mx-auto' type='file' name='image' id="image-update"> 
                 <div class='d-inline-flex mt-4'>
-                    <img id="img-check" src="{{user.profileimage}}">
+                    <img id="img-check" src="{{user.profile.image}}">
                 </div>
             <span class="d-block" style="font-size: 12px">Images will be resized to 150 x 150</span>
             <button type="submit" class="upload-image-pagebtn d-block mt-3">Upload image</button>
@@ -31,29 +31,29 @@
                 <form class='form-update text-dark' action="" method="">
                 <div class="form-group">
                     <label for="username">User Name</label>
-                    <input type="text" class="form-control" id="username" name="username" value="{{user.profileusername}}" disabled="true">
+                    <input type="text" class="form-control" id="username" name="username" value="{{user.profile.username}}" disabled="true">
                 </div>
 
                 <div class="form-group">
                     <label for="birthday">Birthday</label>
-                    <input type="text" class="form-control" id="birthday" name="birthday" value="{{user.profilebirthday}}" disabled="true">
+                    <input type="text" class="form-control" id="birthday" name="birthday" value="{{user.profile.birthday}}" disabled="true">
                 </div>
 
                 <div class="form-group">
                     <label for="location">Location</label>
-                    <input type="text" class="form-control" id="location" name="location" value="{{user.profilelocation}}">
+                    <input type="text" class="form-control" id="location" name="location" value="{{user.profile.location}}">
                 </div>
 
         </div>
 
                 <div class="form-group">
                     <label for="headline">Headline</label>
-                    <input type="text" class="form-control" id="headline" name="headline" value="{{user.profileheadline}}">
+                    <input type="text" class="form-control" id="headline" name="headline" value="{{user.profile.headline}}">
                 </div>
 
                 <div class="form-group">
                     <label for="bio">Bio</label>
-                    <textarea type="text" class="form-control" id="bio" name="bio" rows="3">{{user.profilebio}}</textarea>
+                    <textarea type="text" class="form-control" id="bio" name="bio" rows="3">{{user.profile.bio}}</textarea>
                 </div>
 
         
@@ -62,7 +62,7 @@
             <span id="error-update" class="text-danger warning-class" style="display: none">All fields must be filled</span>
 
         <div class="form-group row d-block mt-5 m-0">
-            <button type="button" class="btn btn-primary btn-lg btn-block update-btn" id="{{user.profileuserId}}">Update</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block update-btn" id="{{user.id}}">Update</button>
         </div>
       
     </div>

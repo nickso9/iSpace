@@ -18,14 +18,14 @@ const User = sequelize.define('users', {
     
 });
 
-User.associate = models => {
-    User.hasMany(models.posts, {
-        onDelete: 'cascade'
-    })
-};
+
 
 User.associate = models => {
     User.hasOne(models.profiles, {
+        onDelete: 'cascade'
+    })
+
+    User.hasMany(models.posts, {
         onDelete: 'cascade'
     })
 };

@@ -45,11 +45,6 @@ router.post('/registration', (req,res) => {
                     headline: req.body.headline,
                     userId: userId
                 })
-
-                // Post.create({
-                //     userId: userId
-                // })
-
                 .then(e => {
                     console.log('sucessful creation')
                     res.redirect('../registration')

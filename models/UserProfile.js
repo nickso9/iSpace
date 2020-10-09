@@ -6,12 +6,12 @@ const UserProfile = sequelize.define('profiles', {
     username: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
     },
 
     birthday: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     location: {
         type: DataTypes.STRING,

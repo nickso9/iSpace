@@ -4,25 +4,38 @@ const router = express.Router()
 const { ensureAuthenticated } = require('../config/auth');
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    db.users.findOne({ where: { id: req.user.id }, include: 'profile', raw: true}).then(userdata => {
+    
+    // db.users.findAll({ where: { id: req.user.id}, include: 'posts'}).then(u => console.log(u))
 
-        if (userdata.regDone == 0) {
+
+    db.users.findAll({ 
+        attributes: ['id', 'email', 'regDone'],
+        where: { id: req.user.id }, 
+        include: [
+            {  
+                model: db.profiles,
+                attributes: ['image', 'username', 'birthday', 'location', 'bio', 'headline']  
+            },{
+                model: db.posts,
+                attributes: ['headline', 'text', 'createdAt']
+            }
+        ],
+        // include: 'profile', include: 'posts', 
+        }).then(userdata => {
+             
+        if (userdata[0].dataValues.regDone == 0) {
             res.redirect('../registration')
         } else {
             const user = {
-
+                id: userdata[0].dataValues.id,
+                email: userdata[0].dataValues.email,
+                regDone: userdata[0].dataValues.regDone,
+                profile: userdata[0].dataValues.profile.dataValues,
+                posts: userdata[0].dataValues.posts
             }
-            for (const [key, value] of Object.entries(userdata))  {
-                if (key == 'id' || key == 'email') {
-                    user[key] = value
-                }
-                if (key.match(/profile/g)) {
-                    newKey = key.replace(".","")
-                    user[newKey] = value
-                }
-            }
-
-            res.render('dashboard', { layout: 'main', user})
+           
+            
+            res.render('dashboard', { layout: 'main', user })
         }
 
     })
