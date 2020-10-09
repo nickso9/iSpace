@@ -22,7 +22,14 @@
 
 
 
-
+<ul>
+  {{#each user.posts}}
+    <li>{{this.dataValues.headline}}</li>
+    <li>{{this.dataValues.text}}</li>
+    <li>{{this.dataValues.createdAt}}</li>
+    <br>
+  {{/each}}
+</ul>
 
 
 
