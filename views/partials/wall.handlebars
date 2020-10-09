@@ -23,16 +23,18 @@
 <ul>
   {{#each user.posts}}
         <div class="card mt-2">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
       
-    <img src="{{this.image}}" style="height: 50px;"><span>{{this.username}}</span>
+    <img src="{{this.image}}" style="height: 50px;"><span class="card-user-name ml-2">{{this.username}}</span>
    
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{this.headline}}</h5>
+    <h5 class="card-title bg-light pt-3 pb-3"><b>{{this.headline}}</b></h5>
     <p class="card-text">{{this.text}}</p>
+
+
     
-    <a href="#" class="btn btn-primary">delete</a>
+    <button class="btn wall-delete-btn float-right">Remove</button>
     <p class="created-by">{{this.createdAt}}</p>
   </div>
 </div>
