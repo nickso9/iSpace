@@ -1,6 +1,4 @@
 
-
-
 module.exports = function(sequelize, DataTypes) {
 const User = sequelize.define('users', {
     email: {
@@ -26,6 +24,10 @@ User.associate = models => {
     })
 
     User.hasMany(models.posts, {
+        onDelete: 'cascade'
+    })
+
+    User.hasOne(models.friends, {
         onDelete: 'cascade'
     })
 };
