@@ -1,8 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     const PendingFriend = sequelize.define('pendingfriends', {
-        list: {
+        pendinglist: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            unique: true
         }
        
     })

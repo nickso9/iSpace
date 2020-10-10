@@ -1,7 +1,7 @@
 
 module.exports = function(sequelize, DataTypes) {
     const Friend = sequelize.define('friends', {
-        list: {
+        friendlist: {
             type: DataTypes.INTEGER,
             allowNull: false
         }

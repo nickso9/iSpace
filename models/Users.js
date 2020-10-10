@@ -27,11 +27,11 @@ User.associate = models => {
         onDelete: 'cascade'
     })
 
-    User.hasOne(models.friends, {
+    User.hasMany(models.friends, {
         onDelete: 'cascade'
     })
 
-    User.hasOne(models.pendingfriends, {
+    User.hasMany(models.pendingfriends, {
         onDelete: 'cascade'
     })
 

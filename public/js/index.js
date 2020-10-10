@@ -158,7 +158,22 @@ $('.form-friend-search').on('submit', (e) => {
 
 
 $('.friend-div').on('click', '.friend-add-btn', (e) => {
+    const idToAdd = e.target.id
+    const userReq = $('.update-btn').attr('id')
+    
+    const pendData = {
+        idToAdd,
+        userReq
+    }
 
+    $.ajax(`/users/pendingfriends`, {
+        method: 'POST',
+        data: pendData
+        })
+        .then(() => {
+            console.log('.then ajax')
+        })
+        .catch(err => console.log(err))
 
 
     console.log(e.target.id)
