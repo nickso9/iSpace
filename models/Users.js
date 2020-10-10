@@ -30,6 +30,11 @@ User.associate = models => {
     User.hasOne(models.friends, {
         onDelete: 'cascade'
     })
+
+    User.hasOne(models.pendingfriends, {
+        onDelete: 'cascade'
+    })
+
 };
     return User;
 }

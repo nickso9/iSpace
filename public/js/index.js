@@ -95,9 +95,17 @@ $('.wall-delete-btn').on('click', (e) => {
 
 $('.form-friend-search').on('submit', (e) => {
     e.preventDefault()
+    const sameName = $('#check-user').text()
     const serBtn = e.target
     const searchTerm = $(serBtn).children().children('input').val()
-    if (!searchTerm) {
+
+    if (searchTerm == sameName) {
+
+        $(".friend-div").empty()
+        const nouser = $('<p class="text-center" style="font-size: 12px; color: red; margin-bottom: 10px;">Cannot add yourself</p>')
+        $(".friend-div").append(nouser)
+
+    }   else if (!searchTerm) {
 
         $(".friend-div").empty()
         const nouser = $('<p class="text-center" style="font-size: 12px; color: red; margin-bottom: 10px;">Empty fields</p>')
@@ -105,47 +113,54 @@ $('.form-friend-search').on('submit', (e) => {
 
     } else {
     
-    $.ajax(`/users/search` , {
-        method: 'GET',
-        data: searchTerm,
-        success: function(response) {
+        $.ajax(`/users/search` , {
+            method: 'GET',
+            data: searchTerm,
+            success: function(response) {
 
-            if (!response) {
+                if (!response) {
 
-                $(".friend-div").empty()
-                const nouser = $('<p class="text-center" style="font-size: 12px; color: red; margin-bottom: 10px;">No User Found</p>')
-                $(".friend-div").append(nouser)
-       
-            } else { 
-                    const friendDiv = $(".friend-div")
+                    $(".friend-div").empty()
+                    const nouser = $('<p class="text-center" style="font-size: 12px; color: red; margin-bottom: 10px;">No User Found</p>')
+                    $(".friend-div").append(nouser)
         
-                    friendDiv.empty()
-                    const friendSearch = `<div class="card bg-light" style="border: 1px solid rgb(255, 145, 0)">
-                    <div class="row m-0">
-                    <div class="">
-                        <img src="${response.image}" class="card-img-friend" alt="...">
-                    </div>
-                    <div class="card-body border-0">
-                        <h5 class="card-title">${response.username}</h5>
-                        <p class="card-text">${response.location}</p>
-                    </div>
-                    <div class="d-flex">
-                        <button class="btn friend-add-btn align-self-end m-3">Add friend</button>
-                    </div>
-                    </div>
-                </div>`
-                friendDiv.append(friendSearch)
-            }
-        },      
-   
-        error: function(error) {
-            console.log(error)
-        }
-
-    })
-
-
-    }
+                } else { 
+                        const friendDiv = $(".friend-div")
+            
+                        friendDiv.empty()
+                        const friendSearch = `<div class="card bg-light" style="border: 1px solid rgb(255, 145, 0)">
+                        <div class="row m-0">
+                        <div class="">
+                            <img src="${response.image}" class="card-img-friend" alt="...">
+                        </div>
+                        <div class="card-body border-0">
+                            <h5 class="card-title">${response.username}</h5>
+                            <p class="card-text">${response.location}</p>
+                        </div>
+                        <div class="d-flex">
+                            <button type="submit" class="btn friend-add-btn align-self-end m-3" id="${response.userId}">Add friend</button>
+                        </div>
+                        </div>
+                    </div>`
+                    friendDiv.append(friendSearch)
+                }
+            },      
     
+            error: function(error) {
+                console.log(error)
+            }
+
+        })
+    }
+})
+
+// add friend button //
+
+
+$('.friend-div').on('click', '.friend-add-btn', (e) => {
+
+
+
+    console.log(e.target.id)
 
 })
