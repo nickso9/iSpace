@@ -140,8 +140,8 @@ $('.form-friend-search').on('submit', (e) => {
                         <div class="d-flex" style="position: relative">
   
                             <button type="submit" class="btn friend-add-btn align-self-end m-3" id="${response.userId}">Add friend</button>
-                            <span class="error-friend" style="font-size: 10px; color: red; display: none; position: absolute; bottom: 0">Friend requests pending</span> 
-                            <span class="success-friend" style="font-size: 10px; color: green; display: none; position: absolute; bottom: 0">Requested friendship</span>   
+                            <span class="error-friend" style="font-size: 10px; color: red; display: none; position: absolute; bottom: 0">Friend requests already pending.</span> 
+                            <span class="success-friend" style="font-size: 10px; color: green; display: none; position: absolute; bottom: 0">Requested friendship.</span>   
                         </div>
                         
                         </div>
