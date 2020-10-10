@@ -1,8 +1,8 @@
-const e = require('express')
 const express = require('express')
 const db = require("../models")
 const router = express.Router()
-PendingFriend = db.pendingfriends
+const PendingFriend = db.pendingfriends
+const Friends = db.friends
 
 router.post('/pendingfriends', (req,res) => {
 
@@ -11,14 +11,12 @@ router.post('/pendingfriends', (req,res) => {
     PendingFriend.findOne({ where: { newFriendId: userReq, userId: idToAdd } })
     .then((alreadyCheck) => {
         if (alreadyCheck != null)  {
-            console.log(alreadyCheck)
             console.log('this user already sent rq')
             res.send('alreadysent')
         } else {
             PendingFriend.findOne({ where: { newFriendId: idToAdd , userId: userReq } })
             .then((alreadyAdd) => {
                 if (alreadyAdd != null) {
-                    console.log(alreadyAdd)
                     res.send('useralready')
                 } else {
 
@@ -54,13 +52,23 @@ router.post('/pendingfriends', (req,res) => {
 })
 
 router.post('/friends', (req, res) => {
-    let { idToAddFriend, idToFriend, pendingIdToDel } = req.body
+    let { idOfMe, idToFriend, pendingIdToDel } = req.body
     PendingFriend.destroy({
         where: {
             id: pendingIdToDel
         }
-    }).then(() => {
-        res.sendStatus(200) 
+    }).then( async () => {
+        await Friends.create({ friendlist: idOfMe, userId: idToFriend  }).then((user) => {
+            return user
+        })
+        .catch(err => console.log(err))
+
+        await Friends.create({ friendlist: idToFriend, userId: idOfMe }).then((user) => {
+            return user
+        })
+        .catch(err => console.log(err))
+
+        res.send('added to friends')
     })
     .catch(err => console.log(err))
 

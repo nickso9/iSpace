@@ -200,9 +200,9 @@ $('.friend-div').on('click', '.friend-add-btn', (e) => {
 $('.friend-pending-btn').on('click',  (e) => {
     const pendingIdToDel = $(e.target).parent().parent().parent().attr('id')
     const idToFriend = e.target.id
-    const idToAddFriend = $('.friend-div').attr('id')
+    const idOfMe = $('.friend-div').attr('id')
     const DataToFriend = {
-        idToAddFriend,
+        idOfMe,
         idToFriend,
         pendingIdToDel
     }
@@ -210,8 +210,8 @@ $('.friend-pending-btn').on('click',  (e) => {
         method: 'POST',
         data: DataToFriend
         })
-        .then(() => {
-            console.log('del pending')
+        .then((e) => {
+            console.log(e)
             setTimeout(function(){
                 window.location.reload();
          }, 1000);
