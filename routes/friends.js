@@ -5,8 +5,6 @@ PendingFriend = db.pendingfriends
 
 router.post('/pendingfriends', (req,res) => {
     let { idToAdd, userReq } = req.body
-    console.log(idToAdd)
-    console.log(userReq)
     PendingFriend.create({
         pendinglist: userReq,
         userId: idToAdd
@@ -16,9 +14,9 @@ router.post('/pendingfriends', (req,res) => {
         res.sendStatus(200)
     })
     .catch(err => res.send(false))  
-    
-    
+      
 })
+
 
 
 module.exports = router

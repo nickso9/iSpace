@@ -16,16 +16,26 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             },{
                 model: db.posts,
                 attributes: ['headline', 'text', 'createdAt', 'userId', 'id'],
+            }, {
+                model: db.pendingfriends,
+                attributes: ['newFriendId', 'username', 'image', 'location']
             }
         ],
        
-        }).then(userdata => {                
-            
+        }).then(userdata => {
         if (userdata[0].dataValues.regDone == 0) {
             res.redirect('../registration')
         } else {
            
+            // let pendingFriends = []
+            // userdata[0].dataValues.newFriendId.forEach(j => {
+            //     pendingFriends.push(Object.values(j.dataValues))
+
+            // })
+            // console.log(pendingFriends)
+
             let { id, email, regDone, profile } = userdata[0].dataValues
+            
             let arr = []
                 userdata[0].dataValues.posts.forEach(e => {
                 e.dataValues['image'] = profile.dataValues.image

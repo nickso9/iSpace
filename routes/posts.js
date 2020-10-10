@@ -5,7 +5,6 @@ Post = db.posts
 
 router.put('/:id/posts', (req,res) => {
     let { userId, text, headline } = req.body
-        console.log(req.body)
     if (!text || !headline) {
         console.log('fields required')    
     } else {

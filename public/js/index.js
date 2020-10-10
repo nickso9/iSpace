@@ -164,10 +164,16 @@ $('.form-friend-search').on('submit', (e) => {
 $('.friend-div').on('click', '.friend-add-btn', (e) => {
     const idToAdd = e.target.id
     const userReq = $('.update-btn').attr('id')
-    
+    const newImage = $('#check-image').attr('src')
+    const newLoc = $('#check-location').html()
+    const newUser = $('#check-user').html()
+
     const pendData = {
         idToAdd,
-        userReq
+        userReq,
+        newImage,
+        newLoc,
+        newUser
     }
 
     $.ajax(`/users/pendingfriends`, {
@@ -178,18 +184,12 @@ $('.friend-div').on('click', '.friend-add-btn', (e) => {
             if (!addUser) {
                 $(".success-friend").hide()
                 $(".error-friend").show()
-                // const alreadyAdd = '<span style="font-size: 10px; color: red;">Friend requests pending</span>'
-                // $(".error-friend").append(alreadyAdd)
+ 
             } else {
                 $(".success-friend").show()
             }
-
-
             
         })
         .catch(err => console.log(err))
-
-
-   
 
 })
