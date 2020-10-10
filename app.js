@@ -43,6 +43,8 @@ app.use('/users', require('./routes/image'))
 app.use('/users', require('./routes/dashboard'))
 app.use('/users', require('./routes/update'))
 app.use('/users/', require('./routes/posts'))
+app.use('/users/', require('./routes/search'))
+
 
 const PORT = process.env.PORT || 8080
 

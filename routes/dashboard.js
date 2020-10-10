@@ -19,33 +19,31 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             }
         ],
        
-        }).then(userdata => {
-
-             
+        }).then(userdata => {                
+            
         if (userdata[0].dataValues.regDone == 0) {
             res.redirect('../registration')
         } else {
+           
             let { id, email, regDone, profile } = userdata[0].dataValues
-
             let arr = []
-            userdata[0].dataValues.posts.forEach(e => {
+                userdata[0].dataValues.posts.forEach(e => {
                 e.dataValues['image'] = profile.dataValues.image
                 e.dataValues['username'] = profile.dataValues.username
                 arr.unshift(e.dataValues)   
-            })
-
-            const user = {
-                id,
-                email,
-                regDone,
-                posts: arr,
-                profile: profile.dataValues,
-            }
-            res.render('dashboard', { layout: 'main', user })
-        }
-
+                })
+                const user = {
+                    id,
+                    email,
+                    regDone,
+                    posts: arr,
+                    profile: profile.dataValues,
+                }
+                    res.render('dashboard', { layout: 'main', user })
+                }
+                   
     })
-   
+    .catch(err => console.log(err))
 })
 
 
