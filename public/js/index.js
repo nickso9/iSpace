@@ -137,9 +137,13 @@ $('.form-friend-search').on('submit', (e) => {
                             <h5 class="card-title">${response.username}</h5>
                             <p class="card-text">${response.location}</p>
                         </div>
-                        <div class="d-flex">
+                        <div class="d-flex" style="position: relative">
+  
                             <button type="submit" class="btn friend-add-btn align-self-end m-3" id="${response.userId}">Add friend</button>
+                            <span class="error-friend" style="font-size: 10px; color: red; display: none; position: absolute; bottom: 0">Friend requests pending</span> 
+                            <span class="success-friend" style="font-size: 10px; color: green; display: none; position: absolute; bottom: 0">Requested friendship</span>   
                         </div>
+                        
                         </div>
                     </div>`
                     friendDiv.append(friendSearch)
@@ -170,12 +174,22 @@ $('.friend-div').on('click', '.friend-add-btn', (e) => {
         method: 'POST',
         data: pendData
         })
-        .then(() => {
-            console.log('.then ajax')
+        .then((addUser) => {
+            if (!addUser) {
+                $(".success-friend").hide()
+                $(".error-friend").show()
+                // const alreadyAdd = '<span style="font-size: 10px; color: red;">Friend requests pending</span>'
+                // $(".error-friend").append(alreadyAdd)
+            } else {
+                $(".success-friend").show()
+            }
+
+
+            
         })
         .catch(err => console.log(err))
 
 
-    console.log(e.target.id)
+   
 
 })
