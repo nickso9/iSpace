@@ -27,12 +27,11 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             res.redirect('../registration')
         } else {
            
-            // let pendingFriends = []
-            // userdata[0].dataValues.newFriendId.forEach(j => {
-            //     pendingFriends.push(Object.values(j.dataValues))
-
-            // })
-            // console.log(pendingFriends)
+            let pendingFriends = []
+            userdata[0].dataValues.pendingfriends.forEach(j => {
+                pendingFriends.push(j.dataValues)
+            })
+               
 
             let { id, email, regDone, profile } = userdata[0].dataValues
             
@@ -48,6 +47,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                     regDone,
                     posts: arr,
                     profile: profile.dataValues,
+                    pendingFriends: pendingFriends
                 }
                     res.render('dashboard', { layout: 'main', user })
                 }
