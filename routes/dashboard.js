@@ -18,7 +18,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 attributes: ['headline', 'text', 'createdAt', 'userId', 'id'],
             }, {
                 model: db.pendingfriends,
-                attributes: ['newFriendId', 'username', 'image', 'location']
+                attributes: ['id','newFriendId', 'username', 'image', 'location']
             }
         ],
        

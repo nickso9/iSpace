@@ -186,7 +186,7 @@ $('.friend-div').on('click', '.friend-add-btn', (e) => {
                 $(".error-friend2").show()   
             } else {
                 console.log('this would suceeed')
-                // $(".success-friend").show()
+                $(".success-friend").show()
             }
             
         })
@@ -194,22 +194,27 @@ $('.friend-div').on('click', '.friend-add-btn', (e) => {
 
 })
 
-// add pending friend // 
+// add pending friend/ delete pending friend // 
 
 
 $('.friend-pending-btn').on('click',  (e) => {
+    const pendingIdToDel = $(e.target).parent().parent().parent().attr('id')
     const idToFriend = e.target.id
     const idToAddFriend = $('.friend-div').attr('id')
     const DataToFriend = {
         idToAddFriend,
-        idToFriend
+        idToFriend,
+        pendingIdToDel
     }
     $.ajax(`/users/friends`, {
         method: 'POST',
         data: DataToFriend
         })
         .then(() => {
-            console.log('.then after add pending')
+            console.log('del pending')
+            setTimeout(function(){
+                window.location.reload();
+         }, 1000);
             
         })
         .catch(err => console.log(err))

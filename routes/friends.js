@@ -54,8 +54,15 @@ router.post('/pendingfriends', (req,res) => {
 })
 
 router.post('/friends', (req, res) => {
-    console.log(req.body)
-
+    let { idToAddFriend, idToFriend, pendingIdToDel } = req.body
+    PendingFriend.destroy({
+        where: {
+            id: pendingIdToDel
+        }
+    }).then(() => {
+        res.sendStatus(200) 
+    })
+    .catch(err => console.log(err))
 
 })
 
