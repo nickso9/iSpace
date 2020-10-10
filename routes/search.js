@@ -10,7 +10,11 @@ router.get('/search', (req,res) => {
         attributes: ['userId', 'username', 'image', 'location'],
         where: { username: queryUser[0] }})
     .then(friendSearch => {
-        res.send(friendSearch.dataValues)   
+        if (!friendSearch) {
+            res.send(false)
+        } else {
+            res.send(friendSearch.dataValues) 
+        }  
 })
     .catch(err => console.log(err))
     
