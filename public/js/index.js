@@ -126,24 +126,20 @@ $('.form-friend-search').on('submit', (e) => {
         
                 } else { 
                         const friendDiv = $(".friend-div")
-            
                         friendDiv.empty()
-                        const friendSearch = `<div class="card bg-light" style="border: 1px solid rgb(255, 145, 0)">
+                        const friendSearch = `<div class="card bg-light" style="">
                         <div class="row m-0">
-                        <div class="">
-                            <img src="${response.image}" class="card-img-friend" alt="...">
-                        </div>
+                            <img src="${response.image}" class="card-img-friend">
                         <div class="card-body border-0">
                             <h5 class="card-title">${response.username}</h5>
                             <p class="card-text">${response.location}</p>
                         </div>
                         <div class="d-flex" style="position: relative">
-  
                             <button type="submit" class="btn friend-add-btn align-self-end m-3" id="${response.userId}">Add friend</button>
-                            <span class="error-friend" style="font-size: 10px; color: red; display: none; position: absolute; bottom: 0">Friend requests already pending.</span> 
+                            <span class="error-friend" style="font-size: 10px; color: red; display: none; position: absolute; bottom: 0">Pending their apporval.</span> 
+                            <span class="error-friend2" style="font-size: 10px; color: red; display: none; position: absolute; bottom: 0">Pending your apporval.</span> 
                             <span class="success-friend" style="font-size: 10px; color: green; display: none; position: absolute; bottom: 0">Requested friendship.</span>   
-                        </div>
-                        
+                        </div>     
                         </div>
                     </div>`
                     friendDiv.append(friendSearch)
@@ -181,13 +177,39 @@ $('.friend-div').on('click', '.friend-add-btn', (e) => {
         data: pendData
         })
         .then((addUser) => {
-            if (!addUser) {
+            if (addUser == 'alreadysent') {
+                console.log('in already send conditional')
                 $(".success-friend").hide()
                 $(".error-friend").show()
- 
+            } else if (addUser == 'useralready') {
+                $(".success-friend").hide()
+                $(".error-friend2").show()   
             } else {
-                $(".success-friend").show()
+                console.log('this would suceeed')
+                // $(".success-friend").show()
             }
+            
+        })
+        .catch(err => console.log(err))
+
+})
+
+// add pending friend // 
+
+
+$('.friend-pending-btn').on('click',  (e) => {
+    const idToFriend = e.target.id
+    const idToAddFriend = $('.friend-div').attr('id')
+    const DataToFriend = {
+        idToAddFriend,
+        idToFriend
+    }
+    $.ajax(`/users/friends`, {
+        method: 'POST',
+        data: DataToFriend
+        })
+        .then(() => {
+            console.log('.then after add pending')
             
         })
         .catch(err => console.log(err))

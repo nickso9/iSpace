@@ -3,12 +3,12 @@ module.exports = function(sequelize, DataTypes) {
         newFriendId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true
+            
         },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
+        
         },
         image: {
             type: DataTypes.STRING,
