@@ -328,14 +328,25 @@ a:hover {
 /* friend page */
 
 .friend-div{
-    height: 100px;
+    height: 25px;
     width: 100%;
-}
-
-.friend-add-btn {
     
 }
 
+
+
+.friend-add-btn {
+    padding: 3px 10px;
+    background-color: rgb(255, 145, 0);
+    border-radius: 5%;
+    border: 1px solid black;
+    color: beige;
+}
+
+.search-btn {
+    background-color: rgb(32, 92, 184);
+    color: beige;
+}
 @media (max-width: 550px) {
 
 div.float-picture {

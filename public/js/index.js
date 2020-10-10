@@ -120,7 +120,7 @@ $('.form-friend-search').on('submit', (e) => {
                     const friendDiv = $(".friend-div")
         
                     friendDiv.empty()
-                    const friendSearch = `<div class="card bg-light">
+                    const friendSearch = `<div class="card bg-light" style="border: 1px solid rgb(255, 145, 0)">
                     <div class="row m-0">
                     <div class="">
                         <img src="${response.image}" class="card-img-friend" alt="...">
