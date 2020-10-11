@@ -3,6 +3,7 @@ const db = require("../models")
 const router = express.Router()
 const PendingFriend = db.pendingfriends
 const Friends = db.friends
+const Profile = db.profiles
 
 router.post('/pendingfriends', (req,res) => {
 
@@ -57,13 +58,44 @@ router.post('/friends', (req, res) => {
             id: pendingIdToDel
         }
     }).then( async () => {
-        await Friends.create({ friendlist: idOfMe, userId: idToFriend  }).then((user) => {
-            return user
+
+        // this is me
+        await Profile.findOne({ where: { userId: idToFriend}, attributes: ['userId','image', 'username', 'location', 'bio', 'headline', 'birthday']})
+        .then(user => {
+            let { image, username, location, bio, headline, birthday } = user.dataValues
+                Friends.create({ 
+                    friendlist: idToFriend, 
+                    userId: idOfMe,
+                    image: image,
+                    username: username,
+                    location: location, 
+                    bio: bio,
+                    headline: headline,
+                    birthday: birthday    
+                }).then((user) => {
+
+                    return user
+                })
         })
         .catch(err => console.log(err))
 
-        await Friends.create({ friendlist: idToFriend, userId: idOfMe }).then((user) => {
-            return user
+        // this is him
+        await Profile.findOne({ where: { userId: idOfMe}, attributes: ['userId','image', 'username', 'location', 'bio', 'headline', 'birthday']})
+        .then(user => {
+            let { image, username, location, bio, headline, birthday } = user.dataValues
+                Friends.create({ 
+                    friendlist: idOfMe, 
+                    userId: idToFriend,
+                    image: image,
+                    username: username,
+                    location: location, 
+                    bio: bio,
+                    headline: headline,
+                    birthday: birthday    
+                }).then((user) => {
+
+                    return user
+                })
         })
         .catch(err => console.log(err))
 

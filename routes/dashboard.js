@@ -19,7 +19,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             }, {
                 model: db.pendingfriends,
                 attributes: ['id','newFriendId', 'username', 'image', 'location']
-            }
+            },
         ],
        
         }).then(userdata => {
