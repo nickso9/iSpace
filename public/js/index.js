@@ -120,7 +120,6 @@ $('.form-friend-search').on('submit', (e) => {
             method: 'GET',
             data: DataToSearch,
             success: function(response) {
-                console.log(response)
                 if (!response) {
 
                     $(".friend-div").empty()
