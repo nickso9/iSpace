@@ -101,7 +101,6 @@ $('.friend-div').on('click', '.friend-add-btn', (e) => {
                 $(".success-friend").hide()
                 $(".error-friend2").show()   
             } else {
-                console.log('this would suceeed')
                 $(".success-friend").show()
             }
             
@@ -129,7 +128,7 @@ $('.friend-pending-btn').on('click',  (e) => {
         .then((e) => {
             setTimeout(function(){
                 window.location.reload();
-         }, 1000);
+         }, 200);
             
         })
         .catch(err => console.log(err))
@@ -152,10 +151,9 @@ $('.friend-remove-btn').on('click', (e) => {
         data: dataToDelete
         })
         .then((e) => {
-            console.log('after')
             setTimeout(function(){
                 window.location.reload();
-         }, 1000);
+         }, 200);
             
         })
         .catch(err => console.log(err))

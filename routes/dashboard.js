@@ -34,6 +34,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             userdata[0].dataValues.pendingfriends.forEach(j => {
                 pendingFriends.push(j.dataValues)
             })
+            
+            // add friends from numbers here //
 
             let arrFriends =[]   
             userdata[0].dataValues.friends.forEach(l => {

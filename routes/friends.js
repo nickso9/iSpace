@@ -101,15 +101,12 @@ router.post('/friends', (req, res) => {
 
 router.delete('/friends' , (req, res ) => {
     let { idOfUser, friendIdToDel } = req.body
-    console.log(idOfUser)
-    console.log(friendIdToDel)
     Friends.destroy({ where: { friendlist: idOfUser, userId: friendIdToDel}})
     .then()
     .catch(err => console.log(err))
     Friends.destroy({ where: { friendlist: friendIdToDel, userId: idOfUser}})
     .then()
     .catch(err => console.log(err))
-
     res.sendStatus(200)
 })
 

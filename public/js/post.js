@@ -26,7 +26,7 @@ $('.post-form').on('submit', (e) => {
         .then(() => {
             setTimeout(function(){
                 window.location.reload();
-         }, 1000);
+         }, 200);
         })
         .catch(err => console.log(err))
 
@@ -49,7 +49,7 @@ $('.wall-delete-btn').on('click', (e) => {
          .then(() => {
              setTimeout(function(){
                  window.location.reload();
-          }, 1000);
+          }, 200);
          })
          .catch(err => console.log(err))
     
