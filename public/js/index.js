@@ -95,9 +95,12 @@ $('.wall-delete-btn').on('click', (e) => {
 
 $('.form-friend-search').on('submit', (e) => {
     e.preventDefault()
+    const idOfUser = $('.user-profile').children().eq(1).attr('id')
     const sameName = $('#check-user').text()
     const serBtn = e.target
     const searchTerm = $(serBtn).children().children('input').val()
+
+    const DataToSearch = { idOfUser, searchTerm }
 
     if (searchTerm == sameName) {
 
@@ -115,15 +118,22 @@ $('.form-friend-search').on('submit', (e) => {
     
         $.ajax(`/users/search` , {
             method: 'GET',
-            data: searchTerm,
+            data: DataToSearch,
             success: function(response) {
-
+                console.log(response)
                 if (!response) {
 
                     $(".friend-div").empty()
                     const nouser = $('<p class="text-center" style="font-size: 12px; color: red; margin-bottom: 10px;">No User Found</p>')
                     $(".friend-div").append(nouser)
         
+                } else if (response == 'alreadyfriend') {
+                    
+                    $(".friend-div").empty()
+                    const nouser = $('<p class="text-center" style="font-size: 12px; color: red; margin-bottom: 10px;">User already friended</p>')
+                    $(".friend-div").append(nouser)
+                
+                
                 } else { 
                         const friendDiv = $(".friend-div")
                         friendDiv.empty()

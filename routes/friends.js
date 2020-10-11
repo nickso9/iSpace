@@ -11,7 +11,6 @@ router.post('/pendingfriends', (req,res) => {
     PendingFriend.findOne({ where: { newFriendId: userReq, userId: idToAdd } })
     .then((alreadyCheck) => {
         if (alreadyCheck != null)  {
-            console.log('this user already sent rq')
             res.send('alreadysent')
         } else {
             PendingFriend.findOne({ where: { newFriendId: idToAdd , userId: userReq } })
