@@ -21,7 +21,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 attributes: ['id','newFriendId', 'username', 'image', 'location']
             }, {
                 model: db.friends,
-                attributes: ['id','image', 'username', 'image', 'location', 'bio', 'headline','birthday']
+                attributes: ['friendlist','image', 'username', 'image', 'location', 'bio', 'headline','birthday', 'userId']
             }
         ],
        
@@ -40,7 +40,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 arrFriends.push(l.dataValues)
             })
 
-
+            console.log(arrFriends)
             let { id, email, regDone, profile } = userdata[0].dataValues
             let arr = []
                 userdata[0].dataValues.posts.forEach(e => {

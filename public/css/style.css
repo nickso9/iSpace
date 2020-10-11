@@ -335,7 +335,7 @@ a:hover {
 
 
 
-.friend-add-btn, .friend-pending-btn {
+.friend-add-btn, .friend-pending-btn, .friend-remove-btn {
     padding: 3px 10px;
     background-color: rgb(255, 145, 0);
     border-radius: 5%;
