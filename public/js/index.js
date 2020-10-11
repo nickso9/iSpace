@@ -96,9 +96,9 @@ $('.wall-delete-btn').on('click', (e) => {
 $('.form-friend-search').on('submit', (e) => {
     e.preventDefault()
     const idOfUser = $('.user-profile').children().eq(1).attr('id')
-    const sameName = $('#check-user').text()
+    const sameName = $('#check-user').text().toLowerCase()
     const serBtn = e.target
-    const searchTerm = $(serBtn).children().children('input').val()
+    const searchTerm = $(serBtn).children().children('input').val().toLowerCase()
 
     const DataToSearch = { idOfUser, searchTerm }
 
@@ -187,7 +187,6 @@ $('.friend-div').on('click', '.friend-add-btn', (e) => {
         })
         .then((addUser) => {
             if (addUser == 'alreadysent') {
-                console.log('in already send conditional')
                 $(".success-friend").hide()
                 $(".error-friend").show()
             } else if (addUser == 'useralready') {

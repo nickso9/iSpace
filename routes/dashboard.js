@@ -19,7 +19,10 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             }, {
                 model: db.pendingfriends,
                 attributes: ['id','newFriendId', 'username', 'image', 'location']
-            },
+            }, {
+                model: db.friends,
+                attributes: ['id','image', 'username', 'image', 'location', 'bio', 'headline','birthday']
+            }
         ],
        
         }).then(userdata => {
@@ -31,10 +34,14 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             userdata[0].dataValues.pendingfriends.forEach(j => {
                 pendingFriends.push(j.dataValues)
             })
-               
+
+            let arrFriends =[]   
+            userdata[0].dataValues.friends.forEach(l => {
+                arrFriends.push(l.dataValues)
+            })
+
 
             let { id, email, regDone, profile } = userdata[0].dataValues
-            
             let arr = []
                 userdata[0].dataValues.posts.forEach(e => {
                 e.dataValues['image'] = profile.dataValues.image
@@ -47,7 +54,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                     regDone,
                     posts: arr,
                     profile: profile.dataValues,
-                    pendingFriends: pendingFriends
+                    pendingFriends: pendingFriends,
+                    friends: arrFriends
                 }
                     res.render('dashboard', { layout: 'main', user })
                 }
