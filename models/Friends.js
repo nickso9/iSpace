@@ -4,31 +4,27 @@ module.exports = function(sequelize, DataTypes) {
         friendlist: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        image: {
-            type: DataTypes.STRING,
-        },
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+        }
+        // ,
+        // image: {
+        //     type: DataTypes.STRING,
+        // },
+        // username: {
+        //     type: DataTypes.STRING,
+        // },
     
-        birthday: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        location: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        bio: {
-            type: DataTypes.TEXT,
-            allowNull: false
-        },
-        headline: {
-            type: DataTypes.TEXT,
-            allowNull: false
-        },
+        // birthday: {
+        //     type: DataTypes.STRING,
+        // },
+        // location: {
+        //     type: DataTypes.STRING,
+        // },
+        // bio: {
+        //     type: DataTypes.TEXT,
+        // },
+        // headline: {
+        //     type: DataTypes.TEXT,
+        // },
        
     })
     

@@ -51,40 +51,23 @@ router.post('/friends', (req, res) => {
         where: {
             id: pendingIdToDel
         }
-    }).then( async () => {
-
-        // this is me
-        await Profile.findOne({ where: { userId: idToFriend}, attributes: ['userId','image', 'username', 'location', 'bio', 'headline', 'birthday']})
-        .then(user => {
-            let { image, username, location, bio, headline, birthday } = user.dataValues
+    }).then(() => {
+        Profile.findOne({ where: { userId: idToFriend}, attributes: ['userId']})
+        .then(() => {
                 Friends.create({ 
                     friendlist: idToFriend, 
                     userId: idOfMe,
-                    image: image,
-                    username: username,
-                    location: location, 
-                    bio: bio,
-                    headline: headline,
-                    birthday: birthday    
                 }).then((user) => {
                     return user
                 })
         })
         .catch(err => console.log(err))
 
-        // this is him
-        await Profile.findOne({ where: { userId: idOfMe}, attributes: ['userId','image', 'username', 'location', 'bio', 'headline', 'birthday']})
-        .then(user => {
-            let { image, username, location, bio, headline, birthday } = user.dataValues
+        Profile.findOne({ where: { userId: idOfMe}, attributes: ['userId']})
+        .then(() => { 
                 Friends.create({ 
                     friendlist: idOfMe, 
                     userId: idToFriend,
-                    image: image,
-                    username: username,
-                    location: location, 
-                    bio: bio,
-                    headline: headline,
-                    birthday: birthday    
                 }).then((user) => {
 
                     return user
@@ -101,6 +84,7 @@ router.post('/friends', (req, res) => {
 
 router.delete('/friends' , (req, res ) => {
     let { idOfUser, friendIdToDel } = req.body
+    console.log(req.body)
     Friends.destroy({ where: { friendlist: idOfUser, userId: friendIdToDel}})
     .then()
     .catch(err => console.log(err))

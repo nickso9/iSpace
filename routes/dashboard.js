@@ -6,7 +6,6 @@ const { ensureAuthenticated } = require('../config/auth');
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     
     db.users.findAll({ 
-        
         attributes: ['id', 'email', 'regDone'],
         where: { id: req.user.id }, 
         include: [
@@ -19,30 +18,45 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             }, {
                 model: db.pendingfriends,
                 attributes: ['id','newFriendId', 'username', 'image', 'location']
-            }, {
+            }, 
+            {
                 model: db.friends,
-                attributes: ['friendlist','image', 'username', 'image', 'location', 'bio', 'headline','birthday', 'userId']
+                attributes: ['friendlist']
             }
-        ],
-       
-        }).then(userdata => {
+        ],   
+    }).then(userdata => {
         if (userdata[0].dataValues.regDone == 0) {
             res.redirect('../registration')
         } else {
            
+
+
+
+
+
+
+           function findData(userdata) { 
+                return userdata[0].dataValues.friends.map(j => { 
+                const userFriend = j.friendlist
+                return Profile.findOne({ where: { userId: userFriend}, attributes: ['userId','image', 'username', 'location', 'bio', 'headline', 'birthday']})
+                    .then(user => ( user.dataValues ))  
+                    .catch(err => console.log(err))  
+
+                })
+                    
+           }
+           const sand = Promise.all(findData(userdata))   
+            .then(userFriend => {
+          
+
             let pendingFriends = []
             userdata[0].dataValues.pendingfriends.forEach(j => {
                 pendingFriends.push(j.dataValues)
             })
             
-            // add friends from numbers here //
+            
 
-            let arrFriends =[]   
-            userdata[0].dataValues.friends.forEach(l => {
-                arrFriends.push(l.dataValues)
-            })
 
-            console.log(arrFriends)
             let { id, email, regDone, profile } = userdata[0].dataValues
             let arr = []
                 userdata[0].dataValues.posts.forEach(e => {
@@ -57,13 +71,35 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                     posts: arr,
                     profile: profile.dataValues,
                     pendingFriends: pendingFriends,
-                    friends: arrFriends
+                    friends: userFriend
                 }
                     res.render('dashboard', { layout: 'main', user })
+
+
+
+
+
+            
+            });
+
+            
+
                 }
                    
     })
     .catch(err => console.log(err))
+
+
+
+
+
+
+
+
+
+
+
+
 })
 
 
