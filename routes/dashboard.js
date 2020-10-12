@@ -52,17 +52,14 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                     })  
             }
             Promise.all(findPost(userdata)).then(friendsPost => {
-                let arr = {}
+                let arrFeed = {}
                 friendsPost.forEach((t, i) => {
                     for (const [key, value] of Object.entries(t)) {
-                        arr[value.id] = value
+                        arrFeed[value.id] = value
                       } 
 
                 })
-                console.log(arr)
-            }) 
-
-
+                
             function findData(userdata) { 
                 return userdata[0].dataValues.friends.map(j => { 
                 const userFriend = j.friendlist
@@ -99,6 +96,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                             email,
                             regDone,
                             posts: arr,
+                            feed: arrFeed,
                             profile: profile.dataValues,
                             pendingFriends: userPendFriend,
                             friends: userFriend
@@ -110,6 +108,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             
                 
             }) 
+
+        }) 
         }
     })
     .catch(err => console.log(err))
