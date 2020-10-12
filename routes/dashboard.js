@@ -17,7 +17,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 attributes: ['headline', 'text', 'createdAt', 'userId', 'id'],
             }, {
                 model: db.pendingfriends,
-                attributes: ['id','newFriendId', 'username', 'image', 'location']
+                attributes: ['id','newFriendId']
             }, 
             {
                 model: db.friends,
@@ -29,79 +29,55 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             res.redirect('../registration')
         } else {
            
-
-
-
-
-
-
-           function findData(userdata) { 
+            function findData(userdata) { 
                 return userdata[0].dataValues.friends.map(j => { 
                 const userFriend = j.friendlist
                 return Profile.findOne({ where: { userId: userFriend}, attributes: ['userId','image', 'username', 'location', 'bio', 'headline', 'birthday']})
                     .then(user => ( user.dataValues ))  
                     .catch(err => console.log(err))  
-
-                })
-                    
+                })               
            }
-           const sand = Promise.all(findData(userdata))   
-            .then(userFriend => {
-          
 
-            let pendingFriends = []
-            userdata[0].dataValues.pendingfriends.forEach(j => {
-                pendingFriends.push(j.dataValues)
-            })
-            
-            
-
-
-            let { id, email, regDone, profile } = userdata[0].dataValues
-            let arr = []
-                userdata[0].dataValues.posts.forEach(e => {
-                e.dataValues['image'] = profile.dataValues.image
-                e.dataValues['username'] = profile.dataValues.username
-                arr.unshift(e.dataValues)   
-                })
-                const user = {
-                    id,
-                    email,
-                    regDone,
-                    posts: arr,
-                    profile: profile.dataValues,
-                    pendingFriends: pendingFriends,
-                    friends: userFriend
+           Promise.all(findData(userdata))   
+            .then(userFriend => {  
+                function findDataPending(userdata) {        
+                    return userdata[0].dataValues.pendingfriends.map(j => {    
+                    return Profile.findOne({ where: { userId: j.newFriendId}, attributes: ['userId','image', 'username', 'location']})
+                        .then(userR => userR.dataValues)
+                        .catch(err => console.log(err))                     
+                    })     
                 }
-                    res.render('dashboard', { layout: 'main', user })
 
+                Promise.all(findDataPending(userdata)) 
+                .then(userPendFriend => {
 
-
-
-
+                    let { id, email, regDone, profile } = userdata[0].dataValues
+                    let arr = []
+                        userdata[0].dataValues.posts.forEach(e => {
+                        e.dataValues['image'] = profile.dataValues.image
+                        e.dataValues['username'] = profile.dataValues.username
+                        arr.unshift(e.dataValues)   
+                        })
+                        const user = {
+                            id,
+                            email,
+                            regDone,
+                            posts: arr,
+                            profile: profile.dataValues,
+                            pendingFriends: userPendFriend,
+                            friends: userFriend
+                        }
+                            res.render('dashboard', { layout: 'main', user })
+        
+                });
+                
             
-            });
-
-            
-
-                }
-                   
+                
+            }) 
+        }
     })
     .catch(err => console.log(err))
 
-
-
-
-
-
-
-
-
-
-
-
 })
-
-
 
 module.exports = router

@@ -7,7 +7,7 @@ const Profile = db.profiles
 
 router.post('/pendingfriends', (req,res) => {
 
-    let { idToAdd, userReq, newImage, newLoc, newUser } = req.body
+    let { idToAdd, userReq } = req.body
 
     PendingFriend.findOne({ where: { newFriendId: userReq, userId: idToAdd } })
     .then((alreadyCheck) => {
@@ -19,16 +19,11 @@ router.post('/pendingfriends', (req,res) => {
                 if (alreadyAdd != null) {
                     res.send('useralready')
                 } else {
-
                      PendingFriend.create({
                         newFriendId: userReq,
                         userId: idToAdd,
-                        username: newUser,
-                        image: newImage,
-                        location: newLoc
                     })
                     .then(() => {    
-                        console.log('.then post')
                         res.sendStatus(200)
                     })
                     .catch(err => res.send(false)) 
@@ -46,10 +41,10 @@ router.post('/pendingfriends', (req,res) => {
 })
 
 router.post('/friends', (req, res) => {
-    let { idOfMe, idToFriend, pendingIdToDel } = req.body
+    let { idOfMe, idToFriend } = req.body
     PendingFriend.destroy({
         where: {
-            id: pendingIdToDel
+            newFriendId: idToFriend, userId: idOfMe
         }
     }).then(() => {
         Profile.findOne({ where: { userId: idToFriend}, attributes: ['userId']})

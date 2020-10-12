@@ -5,18 +5,18 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             
         },
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false,
+        // username: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
         
-        },
-        image: {
-            type: DataTypes.STRING,
-        },
-        location: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+        // },
+        // image: {
+        //     type: DataTypes.STRING,
+        // },
+        // location: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false
+        // },
        
     })
     

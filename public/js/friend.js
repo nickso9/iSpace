@@ -119,7 +119,7 @@ $('.friend-pending-btn').on('click',  (e) => {
     const DataToFriend = {
         idOfMe,
         idToFriend,
-        pendingIdToDel
+        // pendingIdToDel
     }
     $.ajax(`/users/friends`, {
         method: 'POST',
