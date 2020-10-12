@@ -29,17 +29,53 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             res.redirect('../registration')
         } else {
            
+            
+            function findPost(userdata) {
+                return userdata[0].dataValues.friends.map(j => { 
+                    const userFriend = j.friendlist     
+                    return db.users.findAll({ where: { id: userFriend }, include: [{model: db.profiles, attributes: ['image', 'username']}, {model: db.posts, attributes: ['headline', 'text', 'createdAt', 'id'] } ]})
+                    .then(async users => {          
+                        const heyhey = await users[0].posts.map(y => {
+                                    return {
+                                    image: users[0].profile.dataValues.image,
+                                    username: users[0].profile.dataValues.username,
+                                    headline: y.dataValues.headline,
+                                    text: y.dataValues.text,
+                                    createdAt: y.dataValues.createdAt,
+                                    id: y.dataValues.id
+                                    }
+                                })
+                                return heyhey
+                    }) 
+                    .catch(err => console.log(err)) 
+                                
+                    })  
+            }
+            Promise.all(findPost(userdata)).then(friendsPost => {
+                let arr = {}
+                friendsPost.forEach((t, i) => {
+                    for (const [key, value] of Object.entries(t)) {
+                        arr[value.id] = value
+                      } 
+
+                })
+                console.log(arr)
+            }) 
+
+
             function findData(userdata) { 
                 return userdata[0].dataValues.friends.map(j => { 
                 const userFriend = j.friendlist
                 return Profile.findOne({ where: { userId: userFriend}, attributes: ['userId','image', 'username', 'location', 'bio', 'headline', 'birthday']})
                     .then(user => ( user.dataValues ))  
                     .catch(err => console.log(err))  
-                })               
-           }
 
-           Promise.all(findData(userdata))   
+                })        
+           }
+    
+           Promise.all(findData(userdata)) 
             .then(userFriend => {  
+                
                 function findDataPending(userdata) {        
                     return userdata[0].dataValues.pendingfriends.map(j => {    
                     return Profile.findOne({ where: { userId: j.newFriendId}, attributes: ['userId','image', 'username', 'location']})
