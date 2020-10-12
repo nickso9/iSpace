@@ -1,16 +1,18 @@
 
-
+<div class="container mt-5">
 
  {{#each user.feed}}
     <div class="card mt-2" id="{{this.id}}">
-            <div class="card-header d-flex align-items-center">
-                <img src="{{this.image}}" style="height: 50px;"><span class="card-user-name ml-2">{{this.username}}</span>
+            <div class="card-header d-flex">
+                <img src="{{this.image}}" style="height: 50px;" class="align-items-center profile-image"><span class="card-user-name ml-2">{{this.username}}</span>
             </div>
 
         <div class="card-body">
-            <h5 class="card-title bg-light pt-3 pb-3">{{this.headline}}</h5>
-            <p class="card-text">{{this.text}}</p>
+            <h5 class="card-title border-bottom pt-3 pb-1">{{this.headline}}</h5>
+            <p class="card-text mt-4 mb-4">{{this.text}}</p>
             <p class="created-by">{{this.createdAt}}</p>
         </div>
     </div>
   {{/each}}
+
+  </div>
