@@ -244,7 +244,7 @@ a:hover {
 
 .profile-text {
     color: rgb(255, 145, 0);
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .profile-image {
@@ -274,7 +274,7 @@ a:hover {
 /* wall tab */
 
 .card-user-name {
-    color: black;
+    color: beige;
     
 }
 
@@ -287,7 +287,7 @@ a:hover {
 }
 
 .card-header {
-    background-color:  rgb(67, 112, 179);
+    background-color:  rgb(32, 92, 184);
     border: 1px solid black
 }
 
@@ -324,7 +324,7 @@ a:hover {
 }
 
 .bg-darker {
-    background-color: rgb(233, 240, 250);
+    /* background-color: rgb(233, 240, 250); */
 }
 
 .friend-add-btn, .friend-pending-btn, .friend-remove-btn {
@@ -343,6 +343,8 @@ a:hover {
 .card-img-friend {
     border-radius: 25%
 }
+
+
 
 @media (max-width: 550px) {
 
