@@ -83,14 +83,12 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 
                         Promise.all(findDataPending(userdata)) 
                         .then(userPendFriend => {
-
-                        
+    
                         let { id, email, regDone, profile } = userdata[0].dataValues
-
                             function findPostData(userdata) {
                                 return db.posts.findAll({ where: { postId: userdata[0].dataValues.id }, attributes: ['headline', 'text', 'createdAt', 'userId', 'id', 'postId']}).then(async postData => {
                                     const promiseMap = await Promise.all(postData.map(async postSmallData => { 
-                                            const promiseMapReturn = await db.profiles.findAll({ where: { userId: postSmallData.dataValues.postId }, attributes: ['image', 'username']}).then(e => {
+                                            const promiseMapReturn = await db.profiles.findAll({ where: { userId: postSmallData.dataValues.userId }, attributes: ['image', 'username']}).then(e => {
                                                 return {
                                                 headline: postSmallData.dataValues.headline,
                                                 text: postSmallData.dataValues.text,
