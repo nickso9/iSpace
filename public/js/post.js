@@ -64,17 +64,14 @@ $('.post-form-wall').on('submit', (e) => {
     e.preventDefault()
     const newHeadlineWall = $(e.target).children().children('input').val()
     const newTextWall = $(e.target).children().children('input').val()
-    // console.log($(e.target).children().children('textarea').val())
-
-
     const wallUserId = $(e.target).children('button').attr('id')
     const wallPosterId = $('.post-form').attr('id')
     if (!newHeadlineWall || !newTextWall) {
-        $('#small-error-update-wall').show()
+        $(e.target).children('#small-error-update-wall').show()
         console.log('in here')
     } else {
-        $('#small-error-update-wall').hide()
-        $('#small-success-update-wall').show()
+        $(e.target).children('#small-error-update-wall').hide()
+        $(e.target).children('#small-success-update-wall').show()
     const newPosts = {
     headline: newHeadlineWall,
     text: newTextWall,
@@ -82,7 +79,6 @@ $('.post-form-wall').on('submit', (e) => {
     postId: wallUserId,
     wallPost: true
     }    
-    // console.log(newPosts)
     $.ajax(`/users/${wallPosterId}/posts`, {
         method: 'PUT',
         data: newPosts
