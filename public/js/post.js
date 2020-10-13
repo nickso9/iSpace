@@ -16,8 +16,8 @@ $('.post-form').on('submit', (e) => {
     headline: newHeadline,
     text: newText,
     userId: id,
-    postId: id
-
+    postId: id,
+    wallPost: false
     }    
 
     $.ajax(`/users/${e.target.id}/posts`, {
@@ -79,7 +79,8 @@ $('.post-form-wall').on('submit', (e) => {
     headline: newHeadlineWall,
     text: newTextWall,
     userId: wallPosterId,
-    postId: wallUserId
+    postId: wallUserId,
+    wallPost: true
     }    
     // console.log(newPosts)
     $.ajax(`/users/${wallPosterId}/posts`, {

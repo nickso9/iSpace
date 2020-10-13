@@ -12,6 +12,10 @@ const Post = sequelize.define('posts', {
     postId: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    wallPost: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
     }
    
 })

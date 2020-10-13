@@ -32,8 +32,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
             function findPost(userdata) {
                 return userdata[0].dataValues.friends.map(j => { 
                     const userFriend = j.friendlist     
-                    return db.users.findAll({ where: { id: userFriend }, include: [{model: db.profiles, attributes: ['image', 'username']}, {model: db.posts, attributes: ['headline', 'text', 'createdAt', 'id'] } ]})
-                    .then(async users => {          
+                    return db.users.findAll({ where: { id: userFriend} , include: [{model: db.profiles, attributes: ['image', 'username']}, {model: db.posts, attributes: ['headline', 'text', 'createdAt', 'id', 'wallPost']}]})
+                    .then(async users => {         
                         const heyhey = await users[0].posts.map(y => {
                                     return {
                                     image: users[0].profile.dataValues.image,
@@ -41,8 +41,9 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                                     headline: y.dataValues.headline,
                                     text: y.dataValues.text,
                                     createdAt: y.dataValues.createdAt,
-                                    id: y.dataValues.id
-                                    }
+                                    id: y.dataValues.id,
+                                    wallPost: y.dataValues.wallPost
+                                    }         
                                 })
                                 return heyhey
                     }) 
@@ -54,7 +55,9 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 let arrFeed = []
                 friendsPost.forEach((t, i) => {
                     for (const [key, value] of Object.entries(t)) {
+                       if (value.wallPost == false) {
                         arrFeed[value.id] = value
+                       }
                       } 
 
                 })
