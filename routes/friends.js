@@ -41,7 +41,18 @@ router.post('/pendingfriends', (req,res) => {
 })
 
 router.post('/friends', (req, res) => {
-    let { idOfMe, idToFriend } = req.body
+    let { idOfMe, idToFriend, pendingOption } = req.body
+    if (pendingOption == 'remove') {
+        PendingFriend.destroy({
+        where: {
+            newFriendId: idToFriend, userId: idOfMe
+        }
+    })
+    .then(() => res.send('removed from pending'))
+    .catch(err => console.log(err))
+
+    } else {
+        
     PendingFriend.destroy({
         where: {
             newFriendId: idToFriend, userId: idOfMe
@@ -74,12 +85,12 @@ router.post('/friends', (req, res) => {
     })
     .catch(err => console.log(err))
 
+    }
 })
 
 
 router.delete('/friends' , (req, res ) => {
     let { idOfUser, friendIdToDel } = req.body
-    console.log(req.body)
     Friends.destroy({ where: { friendlist: idOfUser, userId: friendIdToDel}})
     .then()
     .catch(err => console.log(err))
@@ -88,5 +99,11 @@ router.delete('/friends' , (req, res ) => {
     .catch(err => console.log(err))
     res.sendStatus(200)
 })
+
+
+
+
+
+
 
 module.exports = router

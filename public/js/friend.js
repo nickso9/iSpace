@@ -116,10 +116,12 @@ $('.friend-pending-btn').on('click',  (e) => {
     const pendingIdToDel = $(e.target).parent().parent().parent().attr('id')
     const idToFriend = e.target.id
     const idOfMe = $('.friend-div').attr('id')
+    const pendingOption = $(e.target).attr('data-value')
+
     const DataToFriend = {
         idOfMe,
         idToFriend,
-        // pendingIdToDel
+        pendingOption
     }
     $.ajax(`/users/friends`, {
         method: 'POST',
