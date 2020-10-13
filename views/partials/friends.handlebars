@@ -61,7 +61,7 @@
              <button type="submit" class="btn friend-remove-btn align-self-start m-3" id="{{this.userId}}">Remove friend</button>                 
             </div>                   
         </div>
-        <form class="mx-auto mt-4 post-form-wall w-100 pr-5 pl-5 pb-2" id="{{user.id}}">
+        <form class="mx-auto mt-4 post-form-wall w-100 pr-5 pl-5 pb-2" id="{{this.friendlist}}">
         Write on Friend's Wall
         <hr>
         <div class="form-group mx-auto">
@@ -74,9 +74,11 @@
             <textarea class="form-control d-block post-text-wall" rows="3"></textarea>
         </div>
 
-        {{!-- <span id="small-error-update" class="text-danger warning-class mt-5" style="display: none">All fields must be filled</span> --}}
+        
 
         <button type="submit" class="btn btn-primary ml-auto wall-btn">Post</button>
+        <span id="small-error-update-wall" class="text-danger ml-2" style="display: none">All fields must be filled</span>
+        <span id="small-success-update-wall" class="text-success ml-2" style="display: none">Post success</span>
     </form>
     </div>
 
