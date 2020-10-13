@@ -4,6 +4,7 @@
 
 $('.post-form').on('submit', (e) => {
     e.preventDefault()
+    console.log(e)
     const newHeadline = $('#headline-text').val()
     const newText = $('#post-text').val()
     const id = e.target.id
@@ -11,7 +12,8 @@ $('.post-form').on('submit', (e) => {
     const newPosts = {
     headline: newHeadline,
     text: newText,
-    userId: id
+    userId: id,
+    postId: id
 
     }
 

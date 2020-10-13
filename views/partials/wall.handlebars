@@ -3,38 +3,39 @@
 <div class="container pb-4">
 
 
-
-<form class="mx-auto mt-4 post-form" id="{{user.id}}">
-    <div class="form-group mx-auto">
-        <label for="headline-text" class="profile-text">Title</label>
-        <input type="tet" class="form-control d-block" id="headline-text">
-    </div>
-
-    <div class="form-group mx-auto">
-        <label for="post-text" class="profile-text">Post</label>
-        <textarea class="form-control d-block" id="post-text" rows="3"></textarea>
-    </div>
-
-    <span id="small-error-update" class="text-danger warning-class mt-5" style="display: none">All fields must be filled</span>
-
-    <button type="submit" class="btn btn-primary ml-auto wall-btn">Post</button>
-</form>
-
-
-  {{#each user.posts}}
-    <div class="card mt-2" id="{{this.id}}">
-            <div class="card-header d-flex">
-                <img src="{{this.image}}" style="height: 50px;" class="align-self-center profile-image"><span class="card-user-name ml-2">{{this.username}}</span>
-            </div>
-
-        <div class="card-body">
-            <h5 class="card-title border-bottom pt-3 pb-1">{{this.headline}}</h5>
-            <p class="card-text mt-4 mb-4">{{this.text}}</p>
-            <button type="submit" class="btn wall-delete-btn float-right" id="{{this.userId}}">Remove</button>
-            <p class="created-by">{{this.createdAt}}</p>
+<form></form>
+    <form class="mx-auto mt-4 post-form" id="{{user.id}}">
+        
+        <div class="form-group mx-auto">
+            <label for="headline-text" class="profile-text">Title</label>
+            <input type="tet" class="form-control d-block" id="headline-text">
         </div>
-    </div>
-  {{/each}}
+
+        <div class="form-group mx-auto">
+            <label for="post-text" class="profile-text">Post</label>
+            <textarea class="form-control d-block" id="post-text" rows="3"></textarea>
+        </div>
+
+        <span id="small-error-update" class="text-danger warning-class mt-5" style="display: none">All fields must be filled</span>
+
+        <button type="submit" class="btn btn-primary ml-auto wall-btn">Post</button>
+    </form>
+
+
+    {{#each user.posts}}
+        <div class="card mt-2" id="{{this.id}}">
+                <div class="card-header d-flex">
+                    <img src="{{this.image}}" style="height: 50px;" class="align-self-center profile-image"><span class="card-user-name ml-2">{{this.username}}</span>
+                </div>
+
+            <div class="card-body">
+                <h5 class="card-title border-bottom pt-3 pb-1">{{this.headline}}</h5>
+                <p class="card-text mt-4 mb-4">{{this.text}}</p>
+                <button type="submit" class="btn wall-delete-btn float-right" id="{{this.userId}}">Remove</button>
+                <p class="created-by">{{this.createdAt}}</p>
+            </div>
+        </div>
+    {{/each}}
 
 
 

@@ -14,7 +14,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 attributes: ['image', 'username', 'birthday', 'location', 'bio', 'headline']  
             },{
                 model: db.posts,
-                attributes: ['headline', 'text', 'createdAt', 'userId', 'id'],
+                attributes: ['headline', 'text', 'createdAt', 'userId', 'id', 'postId'],
             }, {
                 model: db.pendingfriends,
                 attributes: ['id','newFriendId']
@@ -73,7 +73,6 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
     
            Promise.all(findData(userdata)) 
             .then(userFriend => {  
-                
                 function findDataPending(userdata) {        
                     return userdata[0].dataValues.pendingfriends.map(j => {    
                     return Profile.findOne({ where: { userId: j.newFriendId}, attributes: ['userId','image', 'username', 'location']})
@@ -86,12 +85,44 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                 .then(userPendFriend => {
 
                     let { id, email, regDone, profile } = userdata[0].dataValues
+
+                    function findPostData(userdata) {
+                        return db.posts.findAll({ where: { postId: userdata[0].dataValues.id }, attributes: ['headline', 'text', 'createdAt', 'userId', 'id', 'postId']}).then(async postData => {
+                             const promiseMap = await Promise.all(postData.map(async postSmallData => { 
+                                    const promiseMapReturn = await db.profiles.findAll({ where: { userId: postSmallData.dataValues.postId }, attributes: ['image', 'username']}).then(e => {
+                                        return {
+                                        headline: postSmallData.dataValues.headline,
+                                        text: postSmallData.dataValues.text,
+                                        createdAt: postSmallData.dataValues.createdAt,
+                                        id: postSmallData.dataValues.id,
+                                        image: e[0].dataValues.image,
+                                        username: e[0].dataValues.username
+                                        }
+                                    })
+                                    .catch(err => console.log(err))   
+                                    return promiseMapReturn
+                            }))
+                            return promiseMap
+                        })
+                        .catch(err => console.log(err))  
+                    }
+                    Promise.all([findPostData(userdata)])
+                    .then(e => {
+                        console.log(e)
+                        
+                    })
+                    .catch(err => console.log(err))
+
+
+
+
                     let arr = []
                         userdata[0].dataValues.posts.forEach(e => {
                         e.dataValues['image'] = profile.dataValues.image
                         e.dataValues['username'] = profile.dataValues.username
                         arr.unshift(e.dataValues)   
                         })
+
                         const user = {
                             id,
                             email,

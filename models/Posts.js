@@ -8,6 +8,10 @@ const Post = sequelize.define('posts', {
     text: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    postId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
    
 })

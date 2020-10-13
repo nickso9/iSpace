@@ -4,14 +4,15 @@ const router = express.Router()
 Post = db.posts
 
 router.put('/:id/posts', (req,res) => {
-    let { userId, text, headline } = req.body
+    let { userId, text, headline, postId } = req.body
     if (!text || !headline) {
         console.log('fields required')    
     } else {
          Post.create({
             headline,
             text,
-            userId   
+            userId,
+            postId   
          })
          .then(() => {             
              res.sendStatus(200)
