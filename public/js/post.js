@@ -4,22 +4,22 @@
 
 $('.post-form').on('submit', (e) => {
     e.preventDefault()
-    console.log(e)
-    const newHeadline = $('#headline-text').val()
-    const newText = $('#post-text').val()
+   
+    const newHeadline = $('.headline-text').val()
+    const newText = $('.post-text').val()
     const id = e.target.id
-     
+    if (!newHeadline || !newText) {
+        $('#small-error-update').show()
+        console.log('in here')
+    } else {
+    
     const newPosts = {
     headline: newHeadline,
     text: newText,
     userId: id,
     postId: id
 
-    }
-
-    if (!newHeadline || !newText) {
-        $('#small-error-update').show()
-    } else {
+    }    
 
     $.ajax(`/users/${e.target.id}/posts`, {
         method: 'PUT',

@@ -22,11 +22,11 @@ router.put('/:id/posts', (req,res) => {
     
 })
 
-router.delete('/:id/posts', (req,res) => {
-    let { postId, userId } = req.body
+router.delete('/posts', (req,res) => {
+    let { postId } = req.body
     Post.destroy({
         where: {
-            id: postId
+            id: postId,
         }
     }).then(() => {
         res.sendStatus(200) 

@@ -28,8 +28,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
         if (userdata[0].dataValues.regDone == 0) {
             res.redirect('../registration')
         } else {
-           
-            
+                
             function findPost(userdata) {
                 return userdata[0].dataValues.friends.map(j => { 
                     const userFriend = j.friendlist     
@@ -114,16 +113,6 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                                 let wallData = userWallData[0]
                                 
                                 wallData.sort((a, b) =>  b.id - a.id)
-
-                             
-
-
-                                // let arr = []
-                                //     userdata[0].dataValues.posts.forEach(e => {
-                                //     e.dataValues['image'] = profile.dataValues.image
-                                //     e.dataValues['username'] = profile.dataValues.username
-                                //     arr.unshift(e.dataValues)   
-                                //     })
 
                                     const user = {
                                         id,
