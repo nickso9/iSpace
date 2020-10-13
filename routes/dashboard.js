@@ -34,7 +34,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                     const userFriend = j.friendlist     
                     return db.users.findAll({ where: { id: userFriend} , include: [{model: db.profiles, attributes: ['image', 'username']}, {model: db.posts, attributes: ['headline', 'text', 'createdAt', 'id', 'wallPost']}]})
                     .then(async users => {         
-                        const heyhey = await users[0].posts.map(y => {
+                        const findPostFromUsers = await users[0].posts.map(y => {
                                     return {
                                     image: users[0].profile.dataValues.image,
                                     username: users[0].profile.dataValues.username,
@@ -45,7 +45,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
                                     wallPost: y.dataValues.wallPost
                                     }         
                                 })
-                                return heyhey
+                                return findPostFromUsers
                     }) 
                     .catch(err => console.log(err)) 
                                 
