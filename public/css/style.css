@@ -75,14 +75,8 @@ table {
 }
 
 .landing-jumbo, .container-register, .container-login {
-    background-position: center;
-    background-image: url('/images/spaceman2.png');
-    background-size: 250px;
-    background-repeat: no-repeat;
-    height: 800px !important;
+    height: 100vh !important;
     background-color: rgb(32, 92, 184);
-    border-bottom-right-radius: 25%;
-    border-bottom-left-radius: 25%;
     display: flex;
     flex-direction: column;
     max-width: 600px !important;
@@ -165,9 +159,6 @@ a:hover {
     width: 200px;
     margin: auto;
 }
-
-
-
 
 
 
@@ -283,7 +274,8 @@ a:hover {
 /* wall tab */
 
 .card-user-name {
-    color: beige
+    color: black;
+    
 }
 
 #small-error-update {
@@ -295,7 +287,7 @@ a:hover {
 }
 
 .card-header {
-    background-color:  rgb(32, 92, 184);
+    background-color:  rgb(67, 112, 179);
     border: 1px solid black
 }
 
@@ -347,6 +339,11 @@ a:hover {
     background-color: rgb(32, 92, 184);
     color: beige;
 }
+
+.card-img-friend {
+    border-radius: 25%
+}
+
 @media (max-width: 550px) {
 
 div.float-picture {

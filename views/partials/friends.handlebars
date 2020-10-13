@@ -1,5 +1,5 @@
 
-<p class="mt-3 mb-2">Search users to add:</p>
+<p class="mt-3 mb-2 p-3">Search users to add:</p>
 
 <div style="border: 1px solid black">
 <nav class="navbar navbar-light">
@@ -19,13 +19,13 @@
 <div class="friend-div" id="{{user.id}}"></div>
 </div>
 
-<div class="bg-light">
-    <p class="mt-3 mb-2">Friend Requests</p>
+<div class="bg-darker pb-2">
+    <p class="mt-3 p-3 pb-0 ">Friend Requests</p>
     <hr>
 {{#each user.pendingFriends}}
-    <div class="card bg-light mt-3" style="border: 1px solid rgb(255, 145, 0)" id="{{this.id}}">
+    <div class="card bg-light mt-4 m-3" style="border: 1px solid rgb(255, 145, 0)" id="{{this.id}}">
         <div class="row m-0">        
-                <img src="{{this.image}}" class="card-img-friend">      
+                <img src="{{this.image}}" class="card-img-friend p-2">      
             <div class="card-body border-0">
                 <h5 class="card-title">{{this.username}}</h5>
                 <p class="card-text">{{this.location}}</p>
@@ -40,10 +40,10 @@
 </div>
 
 <div class="bg-darker">
-    <p class="mt-3 mb-2">Friends</p>
+    <p class="mt-3 p-3 pb-0 ">Friends</p>
     <hr>
 {{#each user.friends}}
-<div class="card bg-light mt-3 mb-5" style="border: 1px solid rgb(32, 92, 184);" id="{{this.friendlist}}">
+<div class="card bg-light mt-4 m-3" style="border: 1px solid rgb(32, 92, 184);" id="{{this.friendlist}}">
         <div class="row m-0 ">        
                 <img src="{{this.image}}" class="profile-image align-self-center ml-3" style="height: 150px;">      
             <div class="card-body border-0 ml-3">
@@ -62,7 +62,7 @@
              <button type="submit" class="btn friend-remove-btn align-self-start m-3" id="{{this.userId}}">Remove friend</button>                 
             </div>                   
         </div>
-        <form class="mx-auto mt-4 post-form-wall w-100 pr-5 pl-5 pb-2">
+        <form class="mx-auto mt-4 post-form-wall w-100 pr-3 pl-3 pb-2">
         Write on Friend's Wall
         <hr>
         <div class="form-group mx-auto">

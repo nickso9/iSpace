@@ -1,10 +1,12 @@
 {{> header }}
 
+<div style="max-width: 800px" class="mx-auto">
+
 {{> userdetails }}
 
 
 
-<div class="container bg-darker nav-div pt-4">
+<div class="container bg-darker nav-div pt-4 pr-1 pl-1">
 
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -20,14 +22,17 @@
 
 
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade" id="nav-options" role="tabpanel" aria-labelledby="nav-options-tab">{{> options}}</div>
-        <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">{{> feed}}</div>
-        <div class="tab-pane fade w-100" id="nav-wall" role="tabpanel" aria-labelledby="nav-wall-tab">{{> wall}}</div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">{{> friends}}</div>
+        <div class="tab-pane fade p-3" id="nav-options" role="tabpanel" aria-labelledby="nav-options-tab">{{> options}}</div>
+        <div class="tab-pane fade p-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">{{> feed}}</div>
+        <div class="tab-pane fade w-100 p-3" id="nav-wall" role="tabpanel" aria-labelledby="nav-wall-tab">{{> wall}}</div>
+        <div class="tab-pane fade p-3" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">{{> friends}}</div>
         
 
 
         <div class="tab-pane fade show active" id="" role="tabpanel" aria-labelledby=""></div>
      </div>
+
+</div>
+
 
 </div>
