@@ -62,6 +62,7 @@
 
 #### This application is for users to create account to make their profiles to connect with old friends and new, share ideas/stories, and see what their friends are up too. 
 
+![Screen Shot 2020-10-13 at 9 55 35 PM](https://user-images.githubusercontent.com/67135603/95945228-d84f4680-0d9e-11eb-873c-5dd04bb79679.png)
 
 
 
