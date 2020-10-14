@@ -1,4 +1,4 @@
-# **Ispace -- Connect with friends today!**   ![Github All Releases](https://img.shields.io/github/contributors/nsando84/ispace)   
+# **iSpace -- Connect with friends today!**   ![Github All Releases](https://img.shields.io/github/contributors/nsando84/ispace)   
 
 ![Screen Shot 2020-10-13 at 9 45 12 PM](https://user-images.githubusercontent.com/67135603/95944611-6cb8a980-0d9d-11eb-810f-88ad5a62371e.png)
 
