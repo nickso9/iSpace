@@ -44,7 +44,7 @@ $('.form-friend-search').on('submit', (e) => {
                 } else { 
                         const friendDiv = $(".friend-div")
                         friendDiv.empty()
-                        const friendSearch = `<div class="card bg-light">
+                        const friendSearch = `<div class="card bg-light mx-auto border-0" style="width: 90%">
                         <div class="row m-0">
                             <img src="${response.image}" class="card-img-friend">
                         <div class="card-body border-0">

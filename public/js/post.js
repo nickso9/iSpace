@@ -63,7 +63,7 @@ $('.wall-delete-btn').on('click', (e) => {
 $('.post-form-wall').on('submit', (e) => {
     e.preventDefault()
     const newHeadlineWall = $(e.target).children().children('input').val()
-    const newTextWall = $(e.target).children().children('input').val()
+    const newTextWall = $(e.target).children().children('textarea').val()
     const wallUserId = $(e.target).children('button').attr('id')
     const wallPosterId = $('.post-form').attr('id')
     if (!newHeadlineWall || !newTextWall) {
