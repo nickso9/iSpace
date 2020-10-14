@@ -75,11 +75,13 @@ table {
 }
 
 .landing-jumbo, .container-register, .container-login {
-    height: 100vh !important;
+    height: 90vh !important;
     background-color: rgb(32, 92, 184);
     display: flex;
     flex-direction: column;
     max-width: 600px !important;
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 5%;
 }
 
 .warning-class {
