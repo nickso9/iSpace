@@ -15,7 +15,7 @@
 
   ### The task was to create a social app using Passport, Sequelize, Third-Party API, Handlebars & Express. 
 
- #### Make your very own profile----> [***###here***](https://ispaceapp.herokuapp.com/) (Deployed using Heroku)
+ #### Make your very own profile----> [**here**](https://ispaceapp.herokuapp.com/) (Deployed using Heroku)
  
 
  
