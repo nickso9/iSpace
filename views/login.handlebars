@@ -3,7 +3,7 @@
     {{#if success_msg}}
     <span class="text-success warning-class">{{success_msg}}</span>
     {{/if}}
-
+    <h1 class='display-1 text-light mt-5 mx-auto'>iSpace</h1>
     {{#if error}}
     <span class="text-danger warning-class">{{error}}</span>
     {{/if}}
@@ -11,7 +11,7 @@
 
     <form class='form-login' action="/users/login" method="POST"> 
 
-        <div class="form-group row d-block mt-1 m-0">
+        <div class="form-group row d-block m-0">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10 mx-auto">
             <input type="email" class="form-control" id="email" name="email" autocomplete="on">
