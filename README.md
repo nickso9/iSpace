@@ -17,7 +17,7 @@
 
  #### Make your very own profile---->  [***here***](https://ispaceapp.herokuapp.com/)  <----(Deployed using Heroku)
  
- ### Short 3 minute video on application usage ---- [Right Here](https://drive.google.com/file/d/1TJiDBN-ihkrszpHUkqZ2PdAyU_FY0XqQ/view?usp=sharing)
+ ### Short 3 minute video on application usage ---- [Right Here](https://drive.google.com/file/d/1TJiDBN-ihkrszpHUkqZ2PdAyU_FY0XqQ/view)
  
   ### Features in this application:
   
