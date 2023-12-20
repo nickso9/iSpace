@@ -47,16 +47,7 @@
 
 ### **Installation**
 
-    npm install bcryptjs
-    npm install express
-    npm install cloudinary
-    npm install connect-flash
-    npm install dotenv
-    npm install passport
-    npm install sequelize
-    npm install express-session
-    npm install express-handlebars
-    npm install fileupload
+    npm install
 
 ---
 
@@ -81,12 +72,6 @@
 ### **Tests**
 
 ### N/A
-
----
-
-### **Questions?**
-
-www.github.com/nsando84
 
 ---
 
